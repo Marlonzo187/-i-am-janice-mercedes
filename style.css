@@ -112,6 +112,21 @@ nav {
     align-items: center;
     text-align: center;
     padding: 120px 50px 60px 50px;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero-bg.jpg');
+    background-size: cover;
+    background-position: center 35%;
+    filter: grayscale(100%);
+    z-index: -1;
 }
 
 .hero-logo {

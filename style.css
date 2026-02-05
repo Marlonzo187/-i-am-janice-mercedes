@@ -12,14 +12,15 @@
     --mocha: #5A4D41;
     --mahogany: #584738;
     --chai: #7E6957;
-    --dark: #36422E;
+    --dark: #2A2520;
+    --darker: #1E1B18;
     --cream: #FAF7F2;
 }
 
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: var(--cream);
-    color: var(--mocha);
+    background: var(--darker);
+    color: var(--sand);
     line-height: 1.6;
 }
 
@@ -32,13 +33,13 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background: var(--cream);
-    border-bottom: 1px solid var(--sand);
+    background: var(--darker);
+    border-bottom: 1px solid var(--mahogany);
     z-index: 1000;
 }
 
 .logo {
-    color: var(--mahogany);
+    color: var(--tobacco);
     font-size: 1.4rem;
     font-weight: 300;
     letter-spacing: 3px;
@@ -47,7 +48,7 @@ nav {
 }
 
 .logo:hover {
-    color: var(--tobacco);
+    color: var(--sand);
 }
 
 .nav-links {
@@ -62,7 +63,7 @@ nav {
 }
 
 .nav-links a {
-    color: var(--mocha);
+    color: var(--sand);
     text-decoration: none;
     font-size: 0.9rem;
     position: relative;
@@ -81,7 +82,7 @@ nav {
 }
 
 .nav-links a:hover {
-    color: var(--mahogany);
+    color: var(--tobacco);
 }
 
 .nav-links a:not(.btn-book):hover::after {
@@ -89,15 +90,15 @@ nav {
 }
 
 .btn-book {
-    background: var(--mahogany);
-    color: var(--cream) !important;
+    background: var(--tobacco);
+    color: var(--darker) !important;
     padding: 8px 16px;
     border: none;
     transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .btn-book:hover {
-    background: var(--tobacco);
+    background: var(--sand);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(181, 158, 125, 0.4);
 }
@@ -111,7 +112,6 @@ nav {
     align-items: center;
     text-align: center;
     padding: 120px 50px 60px 50px;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--vanilla) 50%, var(--sand) 100%);
 }
 
 .hero-logo {
@@ -123,11 +123,11 @@ nav {
 
 .hero-logo:hover {
     transform: scale(1.03);
-    filter: drop-shadow(0 0 20px rgba(90, 77, 65, 0.3));
+    filter: drop-shadow(0 0 20px rgba(181, 158, 125, 0.4));
 }
 
 .tagline {
-    color: var(--chai);
+    color: var(--sand);
     font-size: 1.1rem;
     font-weight: 300;
     letter-spacing: 3px;
@@ -161,8 +161,8 @@ nav {
 
 .btn {
     display: inline-block;
-    border: 2px solid var(--mahogany);
-    color: var(--mahogany);
+    border: 2px solid var(--tobacco);
+    color: var(--tobacco);
     padding: 12px 30px;
     text-decoration: none;
     letter-spacing: 2px;
@@ -179,15 +179,15 @@ nav {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     transition: left 0.5s ease;
 }
 
 .btn:hover {
-    background: var(--mahogany);
-    color: var(--cream);
+    background: var(--tobacco);
+    color: var(--darker);
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(88, 71, 56, 0.3);
+    box-shadow: 0 5px 20px rgba(181, 158, 125, 0.3);
 }
 
 .btn:hover::before {
@@ -197,15 +197,15 @@ nav {
 /* SECTIONS */
 section {
     padding: 100px 50px;
-    background: var(--cream);
+    background: var(--darker);
 }
 
 section:nth-child(even) {
-    background: var(--vanilla);
+    background: var(--dark);
 }
 
 section h2 {
-    color: var(--mahogany);
+    color: var(--tobacco);
     font-size: 2rem;
     font-weight: 200;
     letter-spacing: 5px;
@@ -215,11 +215,11 @@ section h2 {
 }
 
 section h2:hover {
-    color: var(--tobacco);
+    color: var(--sand);
 }
 
 section p {
-    color: var(--mocha);
+    color: var(--sand);
     font-weight: 300;
 }
 
@@ -247,10 +247,10 @@ section p {
 
 .tabelle {
     width: 450px;
-    background: var(--cream);
+    background: var(--dark);
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(88, 71, 56, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .tabelle-header {
@@ -263,7 +263,7 @@ section p {
     font-size: 1.6rem;
     font-weight: 200;
     letter-spacing: 6px;
-    color: var(--mahogany);
+    color: var(--sand);
     margin-bottom: 10px;
 }
 
@@ -285,11 +285,11 @@ tr {
 }
 
 tr:not(.leer):hover {
-    background: rgba(181, 158, 125, 0.15);
+    background: rgba(181, 158, 125, 0.1);
 }
 
 tr:not(.leer):hover td {
-    color: var(--mahogany);
+    color: var(--vanilla);
 }
 
 td {
@@ -297,7 +297,7 @@ td {
     font-size: 0.85rem;
     font-weight: 300;
     letter-spacing: 1px;
-    color: var(--mocha);
+    color: var(--sand);
     vertical-align: top;
     transition: color 0.3s ease;
 }
@@ -421,7 +421,7 @@ tr.leer td:last-child {
 }
 
 .kontakt-grid a {
-    color: var(--mocha);
+    color: var(--sand);
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -448,7 +448,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(88, 71, 56, 0.95);
+    background: rgba(30, 27, 24, 0.97);
     justify-content: center;
     align-items: center;
     z-index: 2000;
@@ -545,8 +545,8 @@ footer {
 
 .form-tab {
     background: transparent;
-    border: 1px solid var(--sand);
-    color: #888;
+    border: 1px solid var(--mahogany);
+    color: var(--sand);
     padding: 14px 40px;
     font-size: 0.95rem;
     font-family: 'Segoe UI', sans-serif;
@@ -566,7 +566,7 @@ footer {
 
 .form-tab.active {
     background: var(--tobacco);
-    color: #000;
+    color: var(--darker);
     border-color: var(--tobacco);
 }
 
@@ -628,9 +628,9 @@ footer {
 .form-group input,
 .form-group select,
 .form-group textarea {
-    background: var(--vanilla);
-    border: 1px solid var(--sand);
-    color: var(--mocha);
+    background: var(--dark);
+    border: 1px solid var(--mahogany);
+    color: var(--sand);
     padding: 14px 16px;
     font-size: 0.95rem;
     font-family: 'Segoe UI', sans-serif;
@@ -773,9 +773,9 @@ footer {
 }
 
 .legal-content {
-    background: var(--vanilla);
+    background: var(--dark);
     padding: 50px;
-    border: 1px solid #1a1a1a;
+    border: 1px solid var(--mahogany);
     margin-bottom: 40px;
 }
 

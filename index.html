@@ -11,7 +11,15 @@
 
     <nav>
         <div class="logo">I am Janice Mercedes</div>
-        <ul class="nav-links">
+
+        <!-- Hamburger Button (nur Mobile) -->
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">Über mich</a></li>
             <li><a href="#gallery">Galerie</a></li>
@@ -599,6 +607,23 @@
                 tab.classList.add('active');
                 const targetId = tab.getAttribute('data-tab');
                 document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // Hamburger Menü
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Menü schließen wenn Link geklickt wird
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
             });
         });
     </script>

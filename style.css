@@ -884,12 +884,16 @@ footer {
     }
 
     .hero-logo {
-        width: 280px;
+        width: 320px;
     }
 
     .tagline {
         white-space: nowrap;
         font-size: 0.9rem;
+    }
+
+    .hero-galerie {
+        display: none;
     }
 
     .hero-galerie img {

@@ -4,10 +4,22 @@
     box-sizing: border-box;
 }
 
+:root {
+    --vanilla: #F1EADA;
+    --sand: #CEC1A8;
+    --tobacco: #B59E7D;
+    --mountain: #AAA396;
+    --mocha: #5A4D41;
+    --mahogany: #584738;
+    --chai: #7E6957;
+    --dark: #36422E;
+    --cream: #FAF7F2;
+}
+
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: #0a0a0a;
-    color: #fff;
+    background: var(--cream);
+    color: var(--mocha);
     line-height: 1.6;
 }
 
@@ -20,22 +32,22 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background: #0a0a0a;
-    border-bottom: 1px solid #222;
+    background: var(--cream);
+    border-bottom: 1px solid var(--sand);
     z-index: 1000;
 }
 
 .logo {
-    color: #d4af37;
+    color: var(--mahogany);
     font-size: 1.4rem;
     font-weight: 300;
     letter-spacing: 3px;
-    transition: text-shadow 0.3s ease;
+    transition: color 0.3s ease;
     cursor: pointer;
 }
 
 .logo:hover {
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    color: var(--tobacco);
 }
 
 .nav-links {
@@ -50,7 +62,7 @@ nav {
 }
 
 .nav-links a {
-    color: #fff;
+    color: var(--mocha);
     text-decoration: none;
     font-size: 0.9rem;
     position: relative;
@@ -63,13 +75,13 @@ nav {
     bottom: -4px;
     left: 0;
     width: 0;
-    height: 1px;
-    background: #d4af37;
+    height: 2px;
+    background: var(--tobacco);
     transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #d4af37;
+    color: var(--mahogany);
 }
 
 .nav-links a:not(.btn-book):hover::after {
@@ -77,17 +89,17 @@ nav {
 }
 
 .btn-book {
-    background: #d4af37;
-    color: #000 !important;
+    background: var(--mahogany);
+    color: var(--cream) !important;
     padding: 8px 16px;
     border: none;
     transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .btn-book:hover {
-    background: #b8960c;
+    background: var(--tobacco);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 5px 15px rgba(181, 158, 125, 0.4);
 }
 
 /* HERO */
@@ -99,6 +111,7 @@ nav {
     align-items: center;
     text-align: center;
     padding: 120px 50px 60px 50px;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--vanilla) 50%, var(--sand) 100%);
 }
 
 .hero-logo {
@@ -110,11 +123,11 @@ nav {
 
 .hero-logo:hover {
     transform: scale(1.03);
-    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+    filter: drop-shadow(0 0 20px rgba(90, 77, 65, 0.3));
 }
 
 .tagline {
-    color: #aaa;
+    color: var(--chai);
     font-size: 1.1rem;
     font-weight: 300;
     letter-spacing: 3px;
@@ -135,20 +148,21 @@ nav {
     height: 180px;
     object-fit: cover;
     cursor: pointer;
+    border-radius: 8px;
     transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
-    filter: grayscale(20%);
+    filter: grayscale(10%);
 }
 
 .hero-galerie img:hover {
     transform: scale(1.08) rotate(1deg);
     filter: grayscale(0%);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 10px 30px rgba(88, 71, 56, 0.3);
 }
 
 .btn {
     display: inline-block;
-    border: 1px solid #d4af37;
-    color: #d4af37;
+    border: 2px solid var(--mahogany);
+    color: var(--mahogany);
     padding: 12px 30px;
     text-decoration: none;
     letter-spacing: 2px;
@@ -165,15 +179,15 @@ nav {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
     transition: left 0.5s ease;
 }
 
 .btn:hover {
-    background: #d4af37;
-    color: #000;
+    background: var(--mahogany);
+    color: var(--cream);
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 5px 20px rgba(88, 71, 56, 0.3);
 }
 
 .btn:hover::before {
@@ -183,28 +197,29 @@ nav {
 /* SECTIONS */
 section {
     padding: 100px 50px;
+    background: var(--cream);
 }
 
 section:nth-child(even) {
-    background: #0f0f0f;
+    background: var(--vanilla);
 }
 
 section h2 {
-    color: #d4af37;
+    color: var(--mahogany);
     font-size: 2rem;
     font-weight: 200;
     letter-spacing: 5px;
     text-align: center;
     margin-bottom: 40px;
-    transition: text-shadow 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 section h2:hover {
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    color: var(--tobacco);
 }
 
 section p {
-    color: #ccc;
+    color: var(--mocha);
     font-weight: 300;
 }
 
@@ -215,7 +230,7 @@ section p {
 }
 
 .gold {
-    color: #d4af37;
+    color: var(--tobacco);
 }
 
 /* ========================================
@@ -232,6 +247,10 @@ section p {
 
 .tabelle {
     width: 450px;
+    background: var(--cream);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(88, 71, 56, 0.1);
 }
 
 .tabelle-header {
@@ -244,7 +263,7 @@ section p {
     font-size: 1.6rem;
     font-weight: 200;
     letter-spacing: 6px;
-    color: #fff;
+    color: var(--mahogany);
     margin-bottom: 10px;
 }
 
@@ -252,10 +271,10 @@ section p {
     display: block;
     font-family: 'Great Vibes', cursive;
     font-size: 2.8rem;
-    color: #fff;
+    color: var(--tobacco);
 }
 
-/* DIE TABELLE MIT GOLDENER LINIE */
+/* DIE TABELLE MIT LINIE */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -266,11 +285,11 @@ tr {
 }
 
 tr:not(.leer):hover {
-    background: rgba(212, 175, 55, 0.05);
+    background: rgba(181, 158, 125, 0.15);
 }
 
 tr:not(.leer):hover td {
-    color: #fff;
+    color: var(--mahogany);
 }
 
 td {
@@ -278,14 +297,14 @@ td {
     font-size: 0.85rem;
     font-weight: 300;
     letter-spacing: 1px;
-    color: #ccc;
+    color: var(--mocha);
     vertical-align: top;
     transition: color 0.3s ease;
 }
 
 td:first-child {
     text-align: left;
-    border-right: 1px solid #d4af37;
+    border-right: 2px solid var(--tobacco);
     width: 75%;
 }
 
@@ -297,7 +316,7 @@ td:last-child {
 
 tr.leer td {
     padding: 25px 0;
-    border-right: 1px solid #d4af37;
+    border-right: 2px solid var(--tobacco);
 }
 
 tr.leer td:last-child {
@@ -306,7 +325,7 @@ tr.leer td:last-child {
 
 .klein {
     font-size: 0.75rem;
-    color: #777;
+    color: var(--chai);
     letter-spacing: 0.5px;
 }
 
@@ -314,7 +333,7 @@ tr.leer td:last-child {
     text-align: center;
     margin-top: 40px;
     font-size: 0.8rem;
-    color: #666;
+    color: var(--chai);
     letter-spacing: 2px;
 }
 
@@ -332,14 +351,15 @@ tr.leer td:last-child {
     height: 250px;
     object-fit: cover;
     cursor: pointer;
+    border-radius: 8px;
     transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
-    filter: grayscale(20%);
+    filter: grayscale(10%);
 }
 
 .galerie-grid img:hover {
     transform: scale(1.08);
     filter: grayscale(0%);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 10px 30px rgba(88, 71, 56, 0.25);
 }
 
 /* EVENTS */
@@ -352,11 +372,12 @@ tr.leer td:last-child {
 }
 
 .event-liste span {
-    border: 1px solid #d4af37;
-    color: #d4af37;
+    border: 2px solid var(--tobacco);
+    color: var(--mahogany);
     padding: 15px 30px;
     letter-spacing: 2px;
     cursor: default;
+    border-radius: 30px;
     position: relative;
     overflow: hidden;
     transition: color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s;
@@ -369,15 +390,15 @@ tr.leer td:last-child {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     transition: left 0.5s ease;
 }
 
 .event-liste span:hover {
-    background: #d4af37;
-    color: #000;
+    background: var(--tobacco);
+    color: var(--cream);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+    box-shadow: 0 8px 25px rgba(181, 158, 125, 0.3);
 }
 
 .event-liste span:hover::before {
@@ -393,30 +414,29 @@ tr.leer td:last-child {
 }
 
 .kontakt-grid h3 {
-    color: #d4af37;
+    color: var(--tobacco);
     font-weight: 300;
     letter-spacing: 2px;
     margin-bottom: 10px;
 }
 
 .kontakt-grid a {
-    color: #fff;
+    color: var(--mocha);
     text-decoration: none;
-    transition: color 0.3s, text-shadow 0.3s;
+    transition: color 0.3s;
 }
 
 .kontakt-grid a:hover {
-    color: #d4af37;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    color: var(--tobacco);
 }
 
 /* FOOTER */
 footer {
     padding: 30px;
     text-align: center;
-    background: #050505;
-    border-top: 1px solid #1a1a1a;
-    color: #555;
+    background: var(--mahogany);
+    border-top: 1px solid var(--mocha);
+    color: var(--sand);
     font-size: 0.8rem;
 }
 
@@ -428,7 +448,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(88, 71, 56, 0.95);
     justify-content: center;
     align-items: center;
     z-index: 2000;
@@ -438,7 +458,8 @@ footer {
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
-    border: 2px solid #d4af37;
+    border: 3px solid var(--sand);
+    border-radius: 8px;
 }
 
 .lightbox-close {
@@ -446,15 +467,14 @@ footer {
     top: 30px;
     right: 40px;
     font-size: 50px;
-    color: #fff;
+    color: var(--vanilla);
     cursor: pointer;
-    transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+    transition: color 0.3s, transform 0.3s;
 }
 
 .lightbox-close:hover {
-    color: #d4af37;
+    color: var(--sand);
     transform: rotate(90deg) scale(1.1);
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
 }
 
 /* ========================================
@@ -472,7 +492,7 @@ footer {
 }
 
 .booking-category h3 {
-    color: #d4af37;
+    color: var(--tobacco);
     font-family: 'Great Vibes', cursive;
     font-size: 2.5rem;
     font-weight: 400;
@@ -494,14 +514,14 @@ footer {
 .booking-hint {
     margin-top: 20px;
     font-size: 0.85rem;
-    color: #666;
+    color: var(--chai);
     font-style: italic;
 }
 
 .booking-alternative {
     margin-top: 30px;
     margin-bottom: 15px;
-    color: #666;
+    color: var(--chai);
     font-size: 0.9rem;
 }
 
@@ -525,7 +545,7 @@ footer {
 
 .form-tab {
     background: transparent;
-    border: 1px solid #333;
+    border: 1px solid var(--sand);
     color: #888;
     padding: 14px 40px;
     font-size: 0.95rem;
@@ -540,14 +560,14 @@ footer {
 }
 
 .form-tab:hover {
-    color: #d4af37;
-    border-color: #d4af37;
+    color: var(--tobacco);
+    border-color: var(--tobacco);
 }
 
 .form-tab.active {
-    background: #d4af37;
+    background: var(--tobacco);
     color: #000;
-    border-color: #d4af37;
+    border-color: var(--tobacco);
 }
 
 /* Tab Content */
@@ -561,18 +581,18 @@ footer {
 
 .schnellbuchung-info {
     text-align: center;
-    color: #d4af37;
+    color: var(--tobacco);
     font-size: 0.9rem;
     margin-bottom: 25px;
     padding: 15px;
-    border: 1px dashed #333;
+    border: 1px dashed var(--tobacco);
     background: rgba(212, 175, 55, 0.05);
 }
 
 /* Tattoo Formular */
 .tattoo-form-container {
     max-width: 700px;
-    border-top: 1px solid #222;
+    border-top: 1px solid var(--sand);
     padding-top: 60px;
 }
 
@@ -598,7 +618,7 @@ footer {
 }
 
 .form-group label {
-    color: #d4af37;
+    color: var(--tobacco);
     font-size: 0.85rem;
     letter-spacing: 1px;
     margin-bottom: 8px;
@@ -608,9 +628,9 @@ footer {
 .form-group input,
 .form-group select,
 .form-group textarea {
-    background: #151515;
-    border: 1px solid #333;
-    color: #fff;
+    background: var(--vanilla);
+    border: 1px solid var(--sand);
+    color: var(--mocha);
     padding: 14px 16px;
     font-size: 0.95rem;
     font-family: 'Segoe UI', sans-serif;
@@ -621,13 +641,13 @@ footer {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #d4af37;
+    border-color: var(--tobacco);
     box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #555;
+    color: var(--chai);
 }
 
 .form-group select {
@@ -640,8 +660,8 @@ footer {
 }
 
 .form-group select option {
-    background: #151515;
-    color: #fff;
+    background: var(--vanilla);
+    color: var(--mocha);
 }
 
 .form-group textarea {
@@ -655,7 +675,7 @@ footer {
 }
 
 .form-group input[type="file"]::file-selector-button {
-    background: #d4af37;
+    background: var(--tobacco);
     color: #000;
     border: none;
     padding: 8px 16px;
@@ -673,7 +693,7 @@ footer {
     display: block;
     margin-top: 8px;
     font-size: 0.8rem;
-    color: #555;
+    color: var(--chai);
 }
 
 /* Checkboxen */
@@ -696,12 +716,12 @@ footer {
     height: 20px;
     margin-top: 2px;
     flex-shrink: 0;
-    accent-color: #d4af37;
+    accent-color: var(--tobacco);
     cursor: pointer;
 }
 
 .checkbox-label a {
-    color: #d4af37;
+    color: var(--tobacco);
     text-decoration: none;
 }
 
@@ -722,7 +742,7 @@ footer {
 }
 
 .btn-submit:hover {
-    background: #d4af37;
+    background: var(--tobacco);
     color: #000;
 }
 
@@ -737,7 +757,7 @@ footer {
 }
 
 .legal-page h1 {
-    color: #d4af37;
+    color: var(--tobacco);
     font-size: 2.5rem;
     font-weight: 200;
     letter-spacing: 5px;
@@ -747,20 +767,20 @@ footer {
 
 .legal-subtitle {
     text-align: center;
-    color: #666;
+    color: var(--chai);
     font-size: 0.9rem;
     margin-bottom: 50px;
 }
 
 .legal-content {
-    background: #0f0f0f;
+    background: var(--vanilla);
     padding: 50px;
     border: 1px solid #1a1a1a;
     margin-bottom: 40px;
 }
 
 .legal-content h2 {
-    color: #d4af37;
+    color: var(--tobacco);
     font-size: 1.2rem;
     font-weight: 400;
     letter-spacing: 2px;
@@ -793,7 +813,7 @@ footer {
 }
 
 .legal-content strong {
-    color: #fff;
+    color: var(--mocha);
 }
 
 .legal-page > .btn {
@@ -808,13 +828,13 @@ footer {
 }
 
 .footer-links a {
-    color: #555;
+    color: var(--sand);
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .footer-links a:hover {
-    color: #d4af37;
+    color: var(--vanilla);
 }
 
 /* RESPONSIVE */
@@ -900,7 +920,7 @@ footer {
     }
 
     .form-tab:first-child {
-        border-right: 1px solid #333;
+        border-right: 1px solid var(--sand);
         border-bottom: none;
     }
 

@@ -115,8 +115,7 @@ nav {
     position: relative;
 }
 
-.hero::before {
-    content: '';
+.hero-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -126,7 +125,12 @@ nav {
     background-size: cover;
     background-position: center 35%;
     filter: grayscale(100%);
-    z-index: -1;
+    z-index: 0;
+}
+
+.hero > *:not(.hero-bg) {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-logo {

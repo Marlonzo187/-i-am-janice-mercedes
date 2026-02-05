@@ -562,6 +562,33 @@ footer {
     transform: rotate(90deg) scale(1.1);
 }
 
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    color: var(--vanilla);
+    cursor: pointer;
+    padding: 20px;
+    transition: color 0.3s, transform 0.3s;
+    user-select: none;
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    color: var(--tobacco);
+    transform: translateY(-50%) scale(1.2);
+}
+
 /* ========================================
    BOOKING & TATTOO FORMULAR
    ======================================== */
@@ -1004,6 +1031,26 @@ footer {
 
     .hero-galerie {
         display: none;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        font-size: 35px;
+        padding: 15px;
+    }
+
+    .lightbox-prev {
+        left: 10px;
+    }
+
+    .lightbox-next {
+        right: 10px;
+    }
+
+    .lightbox-close {
+        top: 15px;
+        right: 20px;
+        font-size: 40px;
     }
 
     .hero-galerie img {

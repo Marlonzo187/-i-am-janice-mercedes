@@ -1,0 +1,924 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* NAVIGATION */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: #0a0a0a;
+    border-bottom: 1px solid #222;
+    z-index: 1000;
+}
+
+.logo {
+    color: #d4af37;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    transition: text-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.logo:hover {
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-links li {
+    border: none;
+    background: transparent;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a:not(.btn-book)::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #d4af37;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #d4af37;
+}
+
+.nav-links a:not(.btn-book):hover::after {
+    width: 100%;
+}
+
+.btn-book {
+    background: #d4af37;
+    color: #000 !important;
+    padding: 8px 16px;
+    border: none;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-book:hover {
+    background: #b8960c;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 50px 60px 50px;
+}
+
+.hero-logo {
+    width: 350px;
+    max-width: 80%;
+    margin-bottom: 20px;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.hero-logo:hover {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+}
+
+.tagline {
+    color: #aaa;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+}
+
+.hero-galerie {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+}
+
+.hero-galerie img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+    filter: grayscale(20%);
+}
+
+.hero-galerie img:hover {
+    transform: scale(1.08) rotate(1deg);
+    filter: grayscale(0%);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.btn {
+    display: inline-block;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 12px 30px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover {
+    background: #d4af37;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+/* SECTIONS */
+section {
+    padding: 100px 50px;
+}
+
+section:nth-child(even) {
+    background: #0f0f0f;
+}
+
+section h2 {
+    color: #d4af37;
+    font-size: 2rem;
+    font-weight: 200;
+    letter-spacing: 5px;
+    text-align: center;
+    margin-bottom: 40px;
+    transition: text-shadow 0.3s ease;
+}
+
+section h2:hover {
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+section p {
+    color: #ccc;
+    font-weight: 300;
+}
+
+.text-center {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.gold {
+    color: #d4af37;
+}
+
+/* ========================================
+   BEAUTY TABELLEN
+   ======================================== */
+
+.tabellen-container {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tabelle {
+    width: 450px;
+}
+
+.tabelle-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.titel {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 200;
+    letter-spacing: 6px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.untertitel {
+    display: block;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    color: #fff;
+}
+
+/* DIE TABELLE MIT GOLDENER LINIE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr {
+    transition: background 0.3s ease;
+}
+
+tr:not(.leer):hover {
+    background: rgba(212, 175, 55, 0.05);
+}
+
+tr:not(.leer):hover td {
+    color: #fff;
+}
+
+td {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: #ccc;
+    vertical-align: top;
+    transition: color 0.3s ease;
+}
+
+td:first-child {
+    text-align: left;
+    border-right: 1px solid #d4af37;
+    width: 75%;
+}
+
+td:last-child {
+    text-align: right;
+    width: 25%;
+    padding-left: 30px;
+}
+
+tr.leer td {
+    padding: 25px 0;
+    border-right: 1px solid #d4af37;
+}
+
+tr.leer td:last-child {
+    border-right: none;
+}
+
+.klein {
+    font-size: 0.75rem;
+    color: #777;
+    letter-spacing: 0.5px;
+}
+
+.hinweis {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: #666;
+    letter-spacing: 2px;
+}
+
+/* GALERIE */
+.galerie-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.galerie-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+    filter: grayscale(20%);
+}
+
+.galerie-grid img:hover {
+    transform: scale(1.08);
+    filter: grayscale(0%);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+}
+
+/* EVENTS */
+.event-liste {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.event-liste span {
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 15px 30px;
+    letter-spacing: 2px;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.event-liste span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.5s ease;
+}
+
+.event-liste span:hover {
+    background: #d4af37;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+}
+
+.event-liste span:hover::before {
+    left: 100%;
+}
+
+/* KONTAKT */
+.kontakt-grid {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    text-align: center;
+}
+
+.kontakt-grid h3 {
+    color: #d4af37;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.kontakt-grid a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.kontakt-grid a:hover {
+    color: #d4af37;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* FOOTER */
+footer {
+    padding: 30px;
+    text-align: center;
+    background: #050505;
+    border-top: 1px solid #1a1a1a;
+    color: #555;
+    font-size: 0.8rem;
+}
+
+/* LIGHTBOX */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border: 2px solid #d4af37;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 50px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+}
+
+.lightbox-close:hover {
+    color: #d4af37;
+    transform: rotate(90deg) scale(1.1);
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+/* ========================================
+   BOOKING & TATTOO FORMULAR
+   ======================================== */
+
+.booking-category {
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    text-align: center;
+}
+
+.booking-category:last-child {
+    margin-bottom: 0;
+}
+
+.booking-category h3 {
+    color: #d4af37;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.booking-category > p {
+    color: #999;
+    margin-bottom: 25px;
+}
+
+.booking-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.booking-hint {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+}
+
+.booking-alternative {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Beauty Formular */
+.beauty-form-container {
+    max-width: 700px;
+}
+
+.beauty-form {
+    margin-top: 30px;
+    text-align: left;
+}
+
+/* Form Tabs */
+.form-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-top: 30px;
+}
+
+.form-tab {
+    background: transparent;
+    border: 1px solid #333;
+    color: #888;
+    padding: 14px 40px;
+    font-size: 0.95rem;
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-tab:first-child {
+    border-right: none;
+}
+
+.form-tab:hover {
+    color: #d4af37;
+    border-color: #d4af37;
+}
+
+.form-tab.active {
+    background: #d4af37;
+    color: #000;
+    border-color: #d4af37;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.schnellbuchung-info {
+    text-align: center;
+    color: #d4af37;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px dashed #333;
+    background: rgba(212, 175, 55, 0.05);
+}
+
+/* Tattoo Formular */
+.tattoo-form-container {
+    max-width: 700px;
+    border-top: 1px solid #222;
+    padding-top: 60px;
+}
+
+.tattoo-form {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    color: #d4af37;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: 300;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background: #151515;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    font-family: 'Segoe UI', sans-serif;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #555;
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4af37' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+.form-group select option {
+    background: #151515;
+    color: #fff;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input[type="file"] {
+    padding: 12px;
+    cursor: pointer;
+}
+
+.form-group input[type="file"]::file-selector-button {
+    background: #d4af37;
+    color: #000;
+    border: none;
+    padding: 8px 16px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+    background: #b8960c;
+}
+
+.file-hint {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+/* Checkboxen */
+.checkbox-group {
+    margin-top: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    color: #999;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: #d4af37;
+    cursor: pointer;
+}
+
+.checkbox-label a {
+    color: #d4af37;
+    text-decoration: none;
+}
+
+.checkbox-label a:hover {
+    text-decoration: underline;
+}
+
+/* Submit Button */
+.btn-submit {
+    width: 100%;
+    margin-top: 30px;
+    padding: 16px 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    cursor: pointer;
+    background: transparent;
+}
+
+.btn-submit:hover {
+    background: #d4af37;
+    color: #000;
+}
+
+/* ========================================
+   RECHTLICHE SEITEN (AGB, Datenschutz)
+   ======================================== */
+
+.legal-page {
+    padding: 140px 50px 80px 50px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.legal-page h1 {
+    color: #d4af37;
+    font-size: 2.5rem;
+    font-weight: 200;
+    letter-spacing: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.legal-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 50px;
+}
+
+.legal-content {
+    background: #0f0f0f;
+    padding: 50px;
+    border: 1px solid #1a1a1a;
+    margin-bottom: 40px;
+}
+
+.legal-content h2 {
+    color: #d4af37;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.legal-content h2:first-child {
+    margin-top: 0;
+}
+
+.legal-content p {
+    color: #bbb;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.legal-content ul {
+    color: #bbb;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+.legal-content li {
+    margin-bottom: 8px;
+}
+
+.legal-content strong {
+    color: #fff;
+}
+
+.legal-page > .btn {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+/* Footer Links */
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #d4af37;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+    .tabellen-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+    }
+
+    .tabelle {
+        width: 100%;
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .hero-logo {
+        width: 250px;
+    }
+
+    .hero-galerie img {
+        width: 140px;
+        height: 140px;
+    }
+
+    section {
+        padding: 60px 20px;
+    }
+
+    .galerie-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .kontakt-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .event-liste {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Formular Responsive */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .booking-category h3 {
+        font-size: 2rem;
+    }
+
+    .tattoo-form-container {
+        padding-top: 40px;
+    }
+
+    /* Tabs Responsive */
+    .form-tabs {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-tab {
+        padding: 12px 30px;
+    }
+
+    .form-tab:first-child {
+        border-right: 1px solid #333;
+        border-bottom: none;
+    }
+
+    /* Legal Pages Responsive */
+    .legal-page {
+        padding: 120px 20px 60px 20px;
+    }
+
+    .legal-page h1 {
+        font-size: 1.8rem;
+    }
+
+    .legal-content {
+        padding: 30px 20px;
+    }
+
+    .legal-content h2 {
+        font-size: 1.1rem;
+    }
+
+}

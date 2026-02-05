@@ -1,0 +1,8 @@
+# Screenshots und temporäre Dateien
+Screenshot*.png
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Claude settings
+.claude/

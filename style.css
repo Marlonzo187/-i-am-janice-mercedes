@@ -350,6 +350,7 @@ section p {
     letter-spacing: 6px;
     color: var(--sand);
     margin-bottom: 10px;
+    white-space: nowrap;
 }
 
 .untertitel {
@@ -1107,6 +1108,11 @@ footer {
     .form-tab:first-child {
         border-right: 1px solid var(--sand);
         border-bottom: none;
+    }
+
+    .titel {
+        font-size: 1rem;
+        letter-spacing: 3px;
     }
 
     /* Legal Pages Responsive */

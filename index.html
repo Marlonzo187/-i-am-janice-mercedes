@@ -64,6 +64,7 @@
             <li><a href="#gallery">Galerie</a></li>
             <li><a href="#tattoo">Tattoo</a></li>
             <li><a href="#beauty">Beauty</a></li>
+            <li><a href="#preise">Preise</a></li>
             <li><a href="#events">Events</a></li>
             <li><a href="#contact">Kontakt</a></li>
             <li><a href="#booking" class="btn-book">Termin buchen</a></li>
@@ -229,6 +230,77 @@
 
     <section id="beauty">
         <h2 class="fade-in">Beauty</h2>
+        <div class="text-center">
+            <p class="fade-in fade-in-delay-1">Schönheit liegt im Detail.</p>
+            <p class="fade-in fade-in-delay-2" style="margin-top: 5px;">Ein Blick sagt mehr als tausend Worte.</p>
+        </div>
+
+        <div class="beauty-story">
+
+            <div class="story-item story-left fade-in">
+                <div class="story-image">
+                    <img src="beauty-1zu1.webp" alt="1:1 Wimpernverlängerung Technik" loading="lazy">
+                </div>
+                <div class="story-text">
+                    <span class="story-chapter">1:1 Technik</span>
+                    <h3>Der natürliche Look</h3>
+                    <p>Bei dieser Technik wird eine synthetische Wimper auf je eine natürliche Wimper appliziert – für einen natürlichen Mascara-Look, der den ganzen Tag hält.</p>
+                </div>
+            </div>
+
+            <div class="story-item story-right fade-in">
+                <div class="story-text">
+                    <span class="story-chapter">Mix Technik</span>
+                    <h3>Das Beste aus zwei Welten</h3>
+                    <p>Eine Kombination aus der klassischen 1:1-Methode und der Volumentechnik. Einzelne Kunstwimpern werden mit feinen Wimpernfächern gemischt – für einen ausdrucksstarken, aber dennoch natürlichen Blick.</p>
+                </div>
+                <div class="story-image">
+                    <img src="beauty-mix.webp" alt="Mix Wimpernverlängerung Technik" loading="lazy">
+                </div>
+            </div>
+
+            <div class="story-item story-left fade-in">
+                <div class="story-image">
+                    <img src="beauty-volumen.webp" alt="Volumen Wimpernverlängerung Technik" loading="lazy">
+                </div>
+                <div class="story-text">
+                    <span class="story-chapter">Volumen Technik</span>
+                    <h3>Glamour pur</h3>
+                    <p>Für einen besonders dichten und glamourösen Look. Mehrere ultrafeine Kunstwimpern werden zu einem Fächer geformt und auf eine einzelne Naturwimper appliziert – voller Volumen, federleicht.</p>
+                </div>
+            </div>
+
+            <div class="story-item story-right fade-in">
+                <div class="story-text">
+                    <span class="story-chapter">Brow Lifting</span>
+                    <h3>Perfekt in Form</h3>
+                    <p>Die Augenbrauenhärchen werden in die gewünschte Form gebracht und dauerhaft fixiert. Dadurch wirken die Brauen voller, gleichmäßiger und perfekt gestylt – selbst widerspenstige Härchen lassen sich so optimal bändigen.</p>
+                </div>
+                <div class="story-image">
+                    <img src="beauty-browlifting.webp" alt="Brow Lifting Ergebnis" loading="lazy">
+                </div>
+            </div>
+
+            <div class="story-item story-left fade-in">
+                <div class="story-image">
+                    <img src="beauty-lashlifting.webp" alt="Lash Lifting Ergebnis" loading="lazy">
+                </div>
+                <div class="story-text">
+                    <span class="story-chapter">Lash Lifting</span>
+                    <h3>Natürlich geschwungen</h3>
+                    <p>Die natürlichen Wimpern werden sanft nach oben gebogen und fixiert – ganz ohne künstliche Wimpern. Durch ein spezielles Verfahren werden die Härchen vom Ansatz an geliftet, was den Blick sofort offener und frischer erscheinen lässt.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center fade-in" style="margin-top: 60px;">
+            <a href="#preise" class="btn">Zu den Preisen</a>
+        </div>
+    </section>
+
+    <section id="preise">
+        <h2 class="fade-in">Preise</h2>
 
         <div class="tabellen-container">
 
@@ -771,7 +843,7 @@
         const nextBtn = document.querySelector('.lightbox-next');
 
         // Alle Galerie-Bilder sammeln (Galerie + Hero + Tattoo-Story)
-        const galleryImages = Array.from(document.querySelectorAll('.galerie-grid img, .hero-galerie img, .story-image img'));
+        const galleryImages = Array.from(document.querySelectorAll('.galerie-grid img, .hero-galerie img, .tattoo-story .story-image img, .beauty-story .story-image img'));
         let currentIndex = 0;
 
         // Swipe-Schutz: Nur bei echtem Tap öffnen, nicht beim Scrollen

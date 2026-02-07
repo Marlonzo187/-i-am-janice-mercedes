@@ -461,14 +461,16 @@ tr.leer td:last-child {
 }
 
 /* TATTOO STORY */
-.tattoo-story {
+.tattoo-story,
+.beauty-story {
     max-width: 1100px;
     margin: 60px auto 0 auto;
     position: relative;
 }
 
 /* Vertikale Linie in der Mitte */
-.tattoo-story::before {
+.tattoo-story::before,
+.beauty-story::before {
     content: '';
     position: absolute;
     left: 50%;
@@ -584,9 +586,10 @@ tr.leer td:last-child {
     font-weight: 300;
 }
 
-/* Mobile Tattoo Story */
+/* Mobile Tattoo & Beauty Story */
 @media (max-width: 768px) {
-    .tattoo-story::before {
+    .tattoo-story::before,
+    .beauty-story::before {
         display: none;
     }
 

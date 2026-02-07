@@ -4,13 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impressum | I am Janice Mercedes</title>
+    <meta name="description" content="Impressum von I am Janice Mercedes – Tattoo Artist & Beauty Expertin in Grosselfingen.">
+    <link rel="icon" type="image/png" href="logo-schwarz.png">
+    <link rel="apple-touch-icon" href="logo-schwarz.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav>
-        <div class="logo">I am Janice Mercedes</div>
-        <ul class="nav-links">
+        <div class="logo-container">
+            <div class="logo">I am Janice Mercedes</div>
+            <div class="nav-icons">
+                <a href="https://instagram.com/iamjanicemercedes" target="_blank" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="https://www.tiktok.com/@iamjanicemercedes" target="_blank" aria-label="TikTok">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+            <li class="nav-social">
+                <a href="https://instagram.com/iamjanicemercedes" target="_blank" class="social-icon" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="https://www.tiktok.com/@iamjanicemercedes" target="_blank" class="social-icon" aria-label="TikTok">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                    </svg>
+                </a>
+            </li>
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#about">Über mich</a></li>
             <li><a href="index.html#gallery">Galerie</a></li>
@@ -29,9 +69,8 @@
 
             <h2>Angaben zum Betreiber</h2>
             <p>
-                <strong>Janice Mercedes</strong><br>
-                [VOLLSTÄNDIGER NAME FALLS ABWEICHEND]<br><br>
-                [STRAßE + HAUSNUMMER]<br>
+                <strong>Janice Mercedes Bauschke</strong><br><br>
+                Schlehenweg 3<br>
                 72415 Grosselfingen<br>
                 Deutschland
             </p>
@@ -39,12 +78,11 @@
             <h2>Kontakt</h2>
             <p>
                 Telefon: 0174 418 6154<br>
-                E-Mail: [E-MAIL EINFÜGEN]
+                E-Mail: info@iamjanicemercedes.de
             </p>
 
-            <h2>Umsatzsteuer-ID</h2>
-            <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:</p>
-            <p>[UST-ID EINFÜGEN FALLS VORHANDEN, SONST DIESEN ABSCHNITT LÖSCHEN]</p>
+            <h2>Zuständige Aufsichtsbehörde</h2>
+            <p>Finanzamt Balingen</p>
 
             <h2>Berufsbezeichnung</h2>
             <p>
@@ -78,11 +116,26 @@
     </section>
 
     <footer>
-        <p>© 2025 I am Janice Mercedes. Alle Rechte vorbehalten.</p>
+        <p>© 2026 I am Janice Mercedes. Alle Rechte vorbehalten.</p>
         <p class="footer-links">
             <a href="agb.html">AGB</a> | <a href="datenschutz.html">Datenschutz</a> | <a href="impressum.html">Impressum</a>
         </p>
     </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>

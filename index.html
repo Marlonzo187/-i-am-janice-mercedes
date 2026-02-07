@@ -76,11 +76,11 @@
         <p class="tagline">Tattoo Artist & Beauty Expertin</p>
 
         <div class="hero-galerie">
-            <img src="bild1.jpg" alt="Tattoo Arbeit">
-            <img src="bild2.jpg" alt="Tattoo Arbeit">
-            <img src="bild3.jpg" alt="Tattoo Arbeit">
-            <img src="bild4.jpg" alt="Tattoo Arbeit">
-            <img src="bild5.jpg" alt="Tattoo Arbeit">
+            <img src="bild1.webp" alt="Tattoo Arbeit">
+            <img src="bild2.webp" alt="Tattoo Arbeit">
+            <img src="bild3.webp" alt="Tattoo Arbeit">
+            <img src="bild4.webp" alt="Tattoo Arbeit">
+            <img src="bild5.webp" alt="Tattoo Arbeit">
         </div>
 
         <a href="#booking" class="btn">Termin buchen</a>
@@ -100,16 +100,16 @@
     <section id="gallery">
         <h2 class="fade-in">Galerie</h2>
         <div class="galerie-grid">
-            <img src="bild1.jpg" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
-            <img src="bild2.jpg" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
-            <img src="bild3.jpg" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
-            <img src="bild4.jpg" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
-            <img src="bild5.jpg" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
-            <img src="bild6.jpg" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
-            <img src="bild7.jpg" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
-            <img src="bild8.jpg" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
-            <img src="bild9.jpg" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
-            <img src="bild10.jpg" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
+            <img src="bild1.webp" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
+            <img src="bild2.webp" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
+            <img src="bild3.webp" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
+            <img src="bild4.webp" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
+            <img src="bild5.webp" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
+            <img src="bild6.webp" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
+            <img src="bild7.webp" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
+            <img src="bild8.webp" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
+            <img src="bild9.webp" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
+            <img src="bild10.webp" alt="Tattoo Arbeit" class="fade-in" loading="lazy">
         </div>
     </section>
 
@@ -294,8 +294,8 @@
         <h2 class="fade-in">Kontakt</h2>
         <div class="kontakt-grid">
             <div class="fade-in fade-in-delay-1">
-                <h3>Telefon</h3>
-                <p><a href="tel:+491744186154">0174 418 6154</a></p>
+                <h3>E-Mail</h3>
+                <p><a href="mailto:info@iamjanicemercedes.de">info@iamjanicemercedes.de</a></p>
             </div>
             <div class="fade-in fade-in-delay-2">
                 <h3>Instagram</h3>
@@ -514,7 +514,7 @@
 
             <p class="booking-alternative">Oder kontaktiere mich direkt:</p>
             <div class="booking-buttons">
-                <a href="tel:+491744186154" class="btn">Anrufen</a>
+                <a href="mailto:info@iamjanicemercedes.de" class="btn">E-Mail schreiben</a>
                 <a href="https://instagram.com/iamjanicemercedes" target="_blank" class="btn">Instagram</a>
             </div>
         </div>
@@ -643,6 +643,12 @@
             <a href="agb.html">AGB</a> | <a href="datenschutz.html">Datenschutz</a> | <a href="impressum.html">Impressum</a>
         </p>
     </footer>
+
+    <!-- Cookie-Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <p>Diese Website verwendet nur technisch notwendige Cookies. Keine Tracking-Cookies. <a href="datenschutz.html">Mehr erfahren</a></p>
+        <button class="btn cookie-btn" id="cookie-accept">Verstanden</button>
+    </div>
 
     <!-- Scroll-to-Top Button -->
     <button class="scroll-top" id="scroll-top" aria-label="Nach oben scrollen">&#9650;</button>
@@ -807,6 +813,17 @@
         });
 
         fadeElements.forEach(el => fadeObserver.observe(el));
+
+        // Cookie-Banner
+        const cookieBanner = document.getElementById('cookie-banner');
+        const cookieAccept = document.getElementById('cookie-accept');
+        if (localStorage.getItem('cookiesAccepted')) {
+            cookieBanner.classList.add('hidden');
+        }
+        cookieAccept.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.classList.add('hidden');
+        });
     </script>
 
 </body>

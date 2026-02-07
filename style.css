@@ -72,6 +72,7 @@ nav.scrolled {
     letter-spacing: 3px;
     transition: color 0.3s ease;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .logo:hover {
@@ -1061,6 +1062,15 @@ footer {
 
     .hamburger {
         display: flex;
+    }
+
+    .nav-icons {
+        display: none;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
     }
 
     .nav-links {

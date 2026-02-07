@@ -563,6 +563,9 @@
         </p>
     </footer>
 
+    <!-- Scroll-to-Top Button -->
+    <button class="scroll-top" id="scroll-top" aria-label="Nach oben scrollen">&#9650;</button>
+
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close">&times;</span>
@@ -665,6 +668,39 @@
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
             });
+        });
+
+        // Nav-Shrink, Scroll-to-Top & Parallax beim Scrollen
+        const navElement = document.querySelector('nav');
+        const scrollTopBtn = document.getElementById('scroll-top');
+        const heroBg = document.querySelector('.hero-bg');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+
+            // Nav verkleinern
+            if (scrollY > 80) {
+                navElement.classList.add('scrolled');
+            } else {
+                navElement.classList.remove('scrolled');
+            }
+
+            // Scroll-to-Top Button zeigen
+            if (scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+
+            // Parallax-Effekt auf Hero-Hintergrund
+            if (scrollY < window.innerHeight) {
+                heroBg.style.transform = 'translateY(' + scrollY * 0.4 + 'px)';
+            }
+        });
+
+        // Scroll-to-Top Klick
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // Scroll-Animationen mit Intersection Observer

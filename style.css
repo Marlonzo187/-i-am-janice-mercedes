@@ -26,6 +26,10 @@
     --cream: #FAF7F2;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Segoe UI', sans-serif;
     background: var(--darker);
@@ -45,6 +49,14 @@ nav {
     background: var(--darker);
     border-bottom: 1px solid var(--mahogany);
     z-index: 1000;
+    transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav.scrolled {
+    padding: 12px 50px;
+    background: rgba(30, 27, 24, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
@@ -186,12 +198,13 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 120%;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero-bg.jpg');
     background-size: cover;
     background-position: center 35%;
     filter: grayscale(100%);
     z-index: 0;
+    will-change: transform;
 }
 
 .hero > *:not(.hero-bg) {
@@ -971,6 +984,10 @@ footer {
         padding: 15px 20px;
     }
 
+    nav.scrolled {
+        padding: 10px 20px;
+    }
+
     .hamburger {
         display: flex;
     }
@@ -1147,6 +1164,41 @@ footer {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Scroll-to-Top Button */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background: var(--tobacco);
+    color: var(--darker);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease, visibility 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-top:hover {
+    background: var(--sand);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(181, 158, 125, 0.4);
 }
 
 /* Verzögerungen für gestaffelte Animationen */

@@ -540,6 +540,7 @@ tr.leer td:last-child {
     border-radius: 12px;
     filter: grayscale(20%);
     transition: filter 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+    cursor: pointer;
 }
 
 .story-item:hover .story-image img {
@@ -586,20 +587,35 @@ tr.leer td:last-child {
 /* Mobile Tattoo Story */
 @media (max-width: 768px) {
     .tattoo-story::before {
-        left: 20px;
+        display: none;
     }
 
     .story-item {
-        flex-direction: column !important;
-        gap: 25px;
-        margin-bottom: 50px;
-        padding-left: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 40px;
+        align-items: center;
     }
 
     .story-item::after {
-        left: 20px;
-        top: 0;
-        transform: translate(-50%, 0);
+        display: none;
+    }
+
+    .story-left .story-image {
+        order: 1;
+    }
+
+    .story-left .story-text {
+        order: 2;
+    }
+
+    .story-right .story-image {
+        order: 2;
+    }
+
+    .story-right .story-text {
+        order: 1;
     }
 
     .story-image,
@@ -607,16 +623,32 @@ tr.leer td:last-child {
         max-width: 100%;
     }
 
+    .story-center {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
     .story-center .story-image {
         width: 100%;
     }
 
     .story-image img {
-        height: 300px;
+        height: 220px;
     }
 
     .story-text h3 {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+    }
+
+    .story-text p {
+        font-size: 0.8rem;
+        line-height: 1.6;
+    }
+
+    .story-chapter {
+        font-size: 0.65rem;
+        letter-spacing: 2px;
     }
 }
 

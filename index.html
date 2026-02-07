@@ -770,17 +770,45 @@
         const prevBtn = document.querySelector('.lightbox-prev');
         const nextBtn = document.querySelector('.lightbox-next');
 
-        // Alle Galerie-Bilder sammeln
-        const galleryImages = Array.from(document.querySelectorAll('.galerie-grid img, .hero-galerie img'));
+        // Alle Galerie-Bilder sammeln (Galerie + Hero + Tattoo-Story)
+        const galleryImages = Array.from(document.querySelectorAll('.galerie-grid img, .hero-galerie img, .story-image img'));
         let currentIndex = 0;
 
-        // Alle Bilder in Galerie und Hero klickbar machen
+        // Swipe-Schutz: Nur bei echtem Tap öffnen, nicht beim Scrollen
+        let touchStartY = 0;
+        let touchStartX = 0;
+        let touchStartTime = 0;
+
         galleryImages.forEach((img, index) => {
-            img.addEventListener('click', () => {
+            // Desktop: normaler Click
+            img.addEventListener('click', (e) => {
+                if (e.pointerType === 'touch') return; // Touch wird separat behandelt
                 currentIndex = index;
                 lightbox.style.display = 'flex';
                 lightboxImg.src = img.src;
             });
+
+            // Touch: Nur öffnen wenn nicht geswiped wurde
+            img.addEventListener('touchstart', (e) => {
+                touchStartY = e.touches[0].clientY;
+                touchStartX = e.touches[0].clientX;
+                touchStartTime = Date.now();
+            }, { passive: true });
+
+            img.addEventListener('touchend', (e) => {
+                const touchEndY = e.changedTouches[0].clientY;
+                const touchEndX = e.changedTouches[0].clientX;
+                const timeDiff = Date.now() - touchStartTime;
+                const distY = Math.abs(touchEndY - touchStartY);
+                const distX = Math.abs(touchEndX - touchStartX);
+
+                // Nur öffnen bei kurzem Tap (< 300ms) mit wenig Bewegung (< 10px)
+                if (timeDiff < 300 && distY < 10 && distX < 10) {
+                    currentIndex = index;
+                    lightbox.style.display = 'flex';
+                    lightboxImg.src = img.src;
+                }
+            }, { passive: true });
         });
 
         // Vorheriges Bild

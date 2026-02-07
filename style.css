@@ -1209,7 +1209,18 @@ footer {
 }
 
 .legal-content strong {
-    color: var(--mocha);
+    color: var(--tobacco);
+}
+
+.legal-content a {
+    color: var(--tobacco);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.legal-content a:hover {
+    color: var(--sand);
+    text-decoration: underline;
 }
 
 .legal-page > .btn {

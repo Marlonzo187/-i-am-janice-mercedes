@@ -784,6 +784,13 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
+        // Event-Karten: Tap zum Flippen (Touch-Geräte)
+        document.querySelectorAll('.event-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+            });
+        });
+
         // Scroll-Animationen mit Intersection Observer
         const fadeElements = document.querySelectorAll('.fade-in');
 

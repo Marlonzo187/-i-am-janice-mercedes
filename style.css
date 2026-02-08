@@ -1096,6 +1096,44 @@ footer {
     color: var(--chai);
 }
 
+/* Wochentage-Auswahl */
+.wochentage-grid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.wochentag-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background: var(--dark);
+    border: 1px solid var(--mahogany);
+    color: var(--sand);
+    font-size: 0.9rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+    user-select: none;
+}
+
+.wochentag-label:hover {
+    border-color: var(--tobacco);
+}
+
+.wochentag-label input[type="checkbox"] {
+    display: none;
+}
+
+.wochentag-label:has(input:checked) {
+    background: var(--tobacco);
+    border-color: var(--tobacco);
+    color: var(--darker);
+    font-weight: 400;
+}
+
 /* Checkboxen */
 .checkbox-group {
     margin-top: 10px;

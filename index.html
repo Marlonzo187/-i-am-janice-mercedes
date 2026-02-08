@@ -34,14 +34,6 @@
             },
             {
                 "@type": "Question",
-                "name": "Wie viel kostet ein Tattoo?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Die Preise richten sich nach Größe, Detailgrad und Aufwand des Motivs. Nach deiner Anfrage erstelle ich dir ein individuelles Angebot. Kleine Fineline-Tattoos starten ab ca. 80€."
-                }
-            },
-            {
-                "@type": "Question",
                 "name": "Kann ich eine Tätowiererin für meine Hochzeit buchen?",
                 "acceptedAnswer": {
                     "@type": "Answer",
@@ -647,7 +639,7 @@
         <!-- Beauty Buchung -->
         <div class="booking-category beauty-form-container fade-in">
             <h3>Beauty Termine</h3>
-            <p>Wimpernverlängerung, Lash Lifting & mehr – buche deinen Termin!</p>
+            <p>Wimpernverlängerung, Lash Lifting & mehr – sende deine Anfrage und ich melde mich mit einem Terminvorschlag!</p>
 
             <!-- Tab Navigation -->
             <div class="form-tabs">
@@ -718,21 +710,28 @@
                             </optgroup>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="beauty-wunschtermin">Wunschtermin *</label>
-                        <input type="date" id="beauty-wunschtermin" name="wunschtermin" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Verfügbare Wochentage *</label>
+                    <div class="wochentage-grid">
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Montag"> Mo</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Dienstag"> Di</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Mittwoch"> Mi</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Donnerstag"> Do</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Freitag"> Fr</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Samstag"> Sa</label>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="beauty-uhrzeit">Wunschuhrzeit *</label>
-                        <select id="beauty-uhrzeit" name="wunschuhrzeit" required>
+                        <label for="beauty-uhrzeit">Bevorzugte Uhrzeit *</label>
+                        <select id="beauty-uhrzeit" name="bevorzugte_uhrzeit" required>
                             <option value="">Bitte wählen...</option>
                             <option value="Vormittag (9-12 Uhr)">Vormittag (9–12 Uhr)</option>
                             <option value="Mittag (12-15 Uhr)">Mittag (12–15 Uhr)</option>
                             <option value="Nachmittag (15-18 Uhr)">Nachmittag (15–18 Uhr)</option>
-
                             <option value="Flexibel">Flexibel</option>
                         </select>
                     </div>
@@ -811,22 +810,27 @@
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="quick-wunschtermin">Wunschtermin *</label>
-                        <input type="date" id="quick-wunschtermin" name="wunschtermin" required>
+                <div class="form-group full-width">
+                    <label>Verfügbare Wochentage *</label>
+                    <div class="wochentage-grid">
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Montag"> Mo</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Dienstag"> Di</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Mittwoch"> Mi</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Donnerstag"> Do</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Freitag"> Fr</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Samstag"> Sa</label>
                     </div>
-                    <div class="form-group">
-                        <label for="quick-uhrzeit">Wunschuhrzeit *</label>
-                        <select id="quick-uhrzeit" name="wunschuhrzeit" required>
-                            <option value="">Bitte wählen...</option>
-                            <option value="Vormittag (9-12 Uhr)">Vormittag (9–12 Uhr)</option>
-                            <option value="Mittag (12-15 Uhr)">Mittag (12–15 Uhr)</option>
-                            <option value="Nachmittag (15-18 Uhr)">Nachmittag (15–18 Uhr)</option>
+                </div>
 
-                            <option value="Flexibel">Flexibel</option>
-                        </select>
-                    </div>
+                <div class="form-group full-width">
+                    <label for="quick-uhrzeit">Bevorzugte Uhrzeit *</label>
+                    <select id="quick-uhrzeit" name="bevorzugte_uhrzeit" required>
+                        <option value="">Bitte wählen...</option>
+                        <option value="Vormittag (9-12 Uhr)">Vormittag (9–12 Uhr)</option>
+                        <option value="Mittag (12-15 Uhr)">Mittag (12–15 Uhr)</option>
+                        <option value="Nachmittag (15-18 Uhr)">Nachmittag (15–18 Uhr)</option>
+                        <option value="Flexibel">Flexibel</option>
+                    </select>
                 </div>
 
                 <div class="form-group full-width">
@@ -855,7 +859,7 @@
         <!-- Tattoo Anfrage Formular -->
         <div class="booking-category tattoo-form-container fade-in">
             <h3>Tattoo Anfrage</h3>
-            <p>Fülle das Formular aus und ich melde mich bei dir!</p>
+            <p>Sende deine Anfrage mit deiner Verfügbarkeit – ich melde mich persönlich bei dir!</p>
 
             <form class="tattoo-form" action="https://formspree.io/f/xaqdyjzw" method="POST" enctype="multipart/form-data">
 
@@ -892,15 +896,32 @@
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="geburtsdatum">Geburtsdatum *</label>
-                        <input type="date" id="geburtsdatum" name="geburtsdatum" required>
+                <div class="form-group full-width">
+                    <label for="geburtsdatum">Geburtsdatum *</label>
+                    <input type="date" id="geburtsdatum" name="geburtsdatum" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Verfügbare Wochentage *</label>
+                    <div class="wochentage-grid">
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Montag"> Mo</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Dienstag"> Di</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Mittwoch"> Mi</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Donnerstag"> Do</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Freitag"> Fr</label>
+                        <label class="wochentag-label"><input type="checkbox" name="wochentage" value="Samstag"> Sa</label>
                     </div>
-                    <div class="form-group">
-                        <label for="wunschtermin">Wunschtermin</label>
-                        <input type="date" id="wunschtermin" name="wunschtermin">
-                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="tattoo-uhrzeit">Bevorzugte Uhrzeit *</label>
+                    <select id="tattoo-uhrzeit" name="bevorzugte_uhrzeit" required>
+                        <option value="">Bitte wählen...</option>
+                        <option value="Vormittag (9-12 Uhr)">Vormittag (9–12 Uhr)</option>
+                        <option value="Mittag (12-15 Uhr)">Mittag (12–15 Uhr)</option>
+                        <option value="Nachmittag (15-18 Uhr)">Nachmittag (15–18 Uhr)</option>
+                        <option value="Flexibel">Flexibel</option>
+                    </select>
                 </div>
 
                 <div class="form-row">
@@ -981,16 +1002,6 @@
                 </button>
                 <div class="faq-answer">
                     <p>Fülle einfach das Anfrage-Formular auf meiner Seite aus. Beschreibe dein Wunschmotiv, die Körperstelle und ungefähre Größe. Ich melde mich dann bei dir mit einem Vorschlag, Termin und Preisinfo.</p>
-                </div>
-            </div>
-
-            <div class="faq-item fade-in fade-in-delay-1">
-                <button class="faq-question" type="button">
-                    Wie viel kostet ein Tattoo?
-                    <span class="faq-toggle">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Die Preise richten sich nach Größe, Detailgrad und Aufwand des Motivs. Nach deiner Anfrage erstelle ich dir ein individuelles Angebot. Kleine Fineline-Tattoos starten ab ca. 80€.</p>
                 </div>
             </div>
 

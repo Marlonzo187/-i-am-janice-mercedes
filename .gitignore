@@ -6,3 +6,13 @@ Thumbs.db
 
 # Claude settings
 .claude/
+
+# Skills & IDE
+.agents/
+.cursor/
+
+# Deploy-Kopie (wird separat deployed)
+deploy/
+
+# WhatsApp Bilder (Referenzmaterial)
+WhatsApp Image*

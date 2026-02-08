@@ -1560,6 +1560,36 @@ footer {
         font-size: 1.1rem;
     }
 
+    /* Nav: weniger Gap für mehr Links */
+    .nav-links {
+        gap: 22px;
+    }
+
+    /* FAQ Responsive */
+    .faq-question {
+        font-size: 0.9rem;
+        padding: 16px 0;
+    }
+
+    .faq-toggle {
+        font-size: 1.2rem;
+        margin-left: 12px;
+    }
+
+    .faq-answer p {
+        font-size: 0.85rem;
+    }
+
+    /* Wochentage Responsive */
+    .wochentage-grid {
+        gap: 8px;
+    }
+
+    .wochentag-label {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+
 }
 
 /* ========================================

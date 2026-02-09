@@ -925,6 +925,80 @@ footer {
     font-size: 0.9rem;
 }
 
+/* Booking Selector */
+.booking-selector {
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+    text-align: center;
+}
+
+.booking-selector-title {
+    color: var(--sand);
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+.booking-choices {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.booking-choice {
+    flex: 1;
+    max-width: 280px;
+    padding: 40px 30px;
+    background: var(--dark);
+    border: 1px solid var(--mahogany);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+    text-align: center;
+}
+
+.booking-choice:hover {
+    border-color: var(--tobacco);
+    box-shadow: 0 10px 30px rgba(181, 158, 125, 0.2);
+    transform: translateY(-4px);
+}
+
+.booking-choice-title {
+    display: block;
+    color: var(--tobacco);
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.booking-choice-desc {
+    display: block;
+    color: var(--sand);
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.booking-back {
+    display: inline-block;
+    background: transparent;
+    border: none;
+    color: var(--tobacco);
+    font-size: 0.9rem;
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    padding: 8px 0;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.booking-back:hover {
+    color: var(--sand);
+}
+
 /* Beauty Formular */
 .beauty-form-container {
     max-width: 700px;
@@ -992,8 +1066,6 @@ footer {
 /* Tattoo Formular */
 .tattoo-form-container {
     max-width: 700px;
-    border-top: 1px solid var(--sand);
-    padding-top: 60px;
 }
 
 .tattoo-form {
@@ -1505,6 +1577,23 @@ footer {
         height: 250px;
     }
 
+    /* Booking Selector Responsive */
+    .booking-choices {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .booking-choice {
+        max-width: 100%;
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .booking-choice-title {
+        font-size: 1.6rem;
+    }
+
     /* Formular Responsive */
     .form-row {
         flex-direction: column;
@@ -1520,7 +1609,7 @@ footer {
     }
 
     .tattoo-form-container {
-        padding-top: 40px;
+        padding-top: 0;
     }
 
     /* Tabs Responsive */

@@ -16,9 +16,12 @@
 
         body {
             margin: 0;
-            padding: 0;
-            background: #000;
-            overflow: hidden;
+            padding: 50px 0;
+            background: #0A0908;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
 
         .page {
@@ -28,12 +31,25 @@
             align-items: center;
         }
 
-        /* ============================================
-           VORDERSEITE - Dunkles Braun mit Wasserzeichen
-           ============================================ */
+        .card-label {
+            font-family: 'Segoe UI', sans-serif;
+            color: rgba(181, 158, 125, 0.35);
+            font-size: 9px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        /* =============================================
+           VORDERSEITE
+           Dunkler Luxus-Hintergrund
+           Grosses transparentes Wasserzeichen
+           Weisses Logo scharf im Zentrum
+           Goldene Akzentlinie am unteren Rand
+           ============================================= */
         .card-front {
             width: 1050px;
-            height: 680px;
+            height: 600px;
             background: #1E1B18;
             position: relative;
             display: flex;
@@ -43,15 +59,16 @@
             overflow: hidden;
         }
 
-        /* Wasserzeichen Hintergrund: riesig, dunkel, kaum sichtbar */
+        /* Wasserzeichen: Riesig, füllt die ganze Karte, sehr dezent
+           Inspiriert von "Use Zales" Referenz */
         .watermark-bg {
             position: absolute;
-            top: 30%;
+            top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            width: 1100px;
-            height: 1100px;
-            opacity: 0.04;
+            transform: translate(-50%, -48%);
+            width: 1000px;
+            height: 1000px;
+            opacity: 0.06;
             z-index: 0;
             pointer-events: none;
         }
@@ -60,29 +77,27 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+            filter: brightness(2);
         }
 
-        /* Wasserzeichen Vordergrund: heller, sichtbar, edler Kontrast */
-        .watermark-fg {
+        /* Subtiler Warm-Glow im Zentrum */
+        .front-glow {
             position: absolute;
-            top: 30%;
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(
+                ellipse at center,
+                rgba(181, 158, 125, 0.06) 0%,
+                rgba(181, 158, 125, 0.02) 35%,
+                transparent 65%
+            );
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 750px;
-            height: 750px;
-            opacity: 0.08;
             z-index: 1;
-            pointer-events: none;
-            filter: sepia(0.1) brightness(1.8);
         }
 
-        .watermark-fg img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        /* Logo zentriert im Vordergrund - klar und scharf */
+        /* Haupt-Logo: scharf, weiss, zentriert */
         .front-content {
             position: relative;
             z-index: 2;
@@ -92,175 +107,399 @@
         }
 
         .front-logo {
-            width: 180px;
-            margin-bottom: 26px;
+            width: 260px;
+            margin-bottom: 28px;
+            filter: drop-shadow(0 0 30px rgba(181, 158, 125, 0.12));
         }
 
         .front-tagline {
             font-family: 'Segoe UI', sans-serif;
-            color: #F1EADA;
-            font-size: 12px;
+            color: rgba(241, 234, 218, 0.55);
+            font-size: 14px;
             font-weight: 300;
-            letter-spacing: 6px;
+            letter-spacing: 8px;
             text-transform: uppercase;
         }
 
-        /* ============================================
+        /* Goldene Akzentlinie am unteren Rand
+           (wie bei Dália Studio, Camila Braga, Use Zales) */
+        .front-gold-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                transparent 2%,
+                rgba(181, 158, 125, 0.3) 10%,
+                #B59E7D 30%,
+                #CEC1A8 50%,
+                #B59E7D 70%,
+                rgba(181, 158, 125, 0.3) 90%,
+                transparent 98%
+            );
+            z-index: 3;
+        }
+
+        /* =============================================
            ABSTAND
-           ============================================ */
+           ============================================= */
         .spacer {
-            height: 40px;
-            background: #000;
+            height: 50px;
             width: 1050px;
         }
 
-        /* ============================================
-           RUECKSEITE - Helles Beige, QR links, Kontakt rechts
-           ============================================ */
+        /* =============================================
+           RÜCKSEITE
+           Helles Cream/Beige (#F1EADA)
+           QR-Code links, Kontaktdaten rechts
+           Inspiriert von Dália Studio / Camila Braga
+           ============================================= */
         .card-back {
             width: 1050px;
-            height: 680px;
+            height: 600px;
             background: #F1EADA;
             position: relative;
             display: flex;
             align-items: center;
-            justify-content: center;
             overflow: hidden;
         }
 
+        /* Dezenter Farbverlauf am linken Rand
+           (wie der farbige Rand bei Camila Braga) */
+        .back-left-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg,
+                rgba(181, 158, 125, 0.2) 0%,
+                #B59E7D 30%,
+                #B59E7D 70%,
+                rgba(181, 158, 125, 0.2) 100%
+            );
+            z-index: 3;
+        }
+
+        /* Dezentes Wasserzeichen auf der Rückseite (sehr subtle) */
+        .back-watermark {
+            position: absolute;
+            top: 50%;
+            left: 18%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            opacity: 0.03;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .back-watermark img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Layout */
         .back-layout {
             display: flex;
             align-items: center;
-            gap: 0;
             width: 100%;
             height: 100%;
-            justify-content: center;
+            position: relative;
+            z-index: 2;
         }
 
-        /* QR-Code links */
+        /* ---- QR-Code Bereich (links) ---- */
         .back-left {
-            flex: 1;
+            width: 36%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 14px;
         }
+
+        .qr-frame {
+            position: relative;
+            padding: 10px;
+            border: 1px solid rgba(181, 158, 125, 0.3);
+        }
+
+        /* Gold-Ecken am QR-Rahmen (wie bei Referenzen) */
+        .qr-corner {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+        }
+        .qr-corner-tl { top: -1px; left: -1px; border-top: 2.5px solid #B59E7D; border-left: 2.5px solid #B59E7D; }
+        .qr-corner-tr { top: -1px; right: -1px; border-top: 2.5px solid #B59E7D; border-right: 2.5px solid #B59E7D; }
+        .qr-corner-bl { bottom: -1px; left: -1px; border-bottom: 2.5px solid #B59E7D; border-left: 2.5px solid #B59E7D; }
+        .qr-corner-br { bottom: -1px; right: -1px; border-bottom: 2.5px solid #B59E7D; border-right: 2.5px solid #B59E7D; }
 
         .qr-img {
-            width: 200px;
-            height: 200px;
+            width: 170px;
+            height: 170px;
+            display: block;
         }
 
-        /* Senkrechte Trennlinie in der Mitte */
-        .divider-vertical {
+        .qr-label {
+            font-family: 'Segoe UI', sans-serif;
+            color: #B59E7D;
+            font-size: 11px;
+            letter-spacing: 4.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        /* ---- Vertikale Trennlinie ---- */
+        .divider-line {
             width: 1px;
-            height: 260px;
-            background: linear-gradient(180deg, transparent, #B59E7D, transparent);
+            height: 300px;
+            background: linear-gradient(180deg,
+                transparent 0%,
+                rgba(181, 158, 125, 0.25) 15%,
+                rgba(181, 158, 125, 0.4) 50%,
+                rgba(181, 158, 125, 0.25) 85%,
+                transparent 100%
+            );
             flex-shrink: 0;
         }
 
-        /* Kontaktdaten rechts */
+        /* ---- Kontaktdaten (rechts) ---- */
         .back-right {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding-left: 50px;
-            gap: 22px;
+            padding-right: 55px;
         }
 
-        .contact-item {
+        .back-name {
+            font-family: 'Great Vibes', cursive;
+            color: #5A4D41;
+            font-size: 42px;
+            font-weight: 400;
+            margin-bottom: 2px;
+            line-height: 1.1;
+        }
+
+        .back-title {
+            font-family: 'Segoe UI', sans-serif;
+            color: #B59E7D;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 5.5px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        /* Kontakt-Zeilen mit Gold-Icons */
+        .contact-row {
             display: flex;
             align-items: center;
             gap: 16px;
+            margin-bottom: 18px;
         }
 
-        /* Goldene Kreis-Icons (wie im Referenzbild) */
-        .contact-icon-circle {
+        .contact-row:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* Goldene runde Icons (wie Dália Studio / Hayley Shepley) */
+        .icon-circle {
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            border: 1.5px solid #B59E7D;
+            background: #B59E7D;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            background: rgba(181, 158, 125, 0.06);
         }
 
-        .contact-icon-circle svg {
+        .icon-circle svg {
             width: 16px;
             height: 16px;
+            fill: #FFFFFF;
+        }
+
+        .contact-info {
+            font-family: 'Segoe UI', sans-serif;
+            color: #5A4D41;
+            font-size: 15px;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+            line-height: 1.4;
+        }
+
+        .contact-info-sub {
+            font-family: 'Segoe UI', sans-serif;
+            color: #AAA396;
+            font-size: 12.5px;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        /* Social Media Zeile */
+        .social-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(181, 158, 125, 0.3), rgba(181, 158, 125, 0.08));
+            margin: 20px 0 16px 0;
+        }
+
+        .social-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icon-small {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1.2px solid rgba(181, 158, 125, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icon-small svg {
+            width: 14px;
+            height: 14px;
             fill: #B59E7D;
         }
 
-        .contact-text {
+        .social-text {
             font-family: 'Segoe UI', sans-serif;
-            color: #1E1B18;
+            color: #AAA396;
             font-size: 13px;
             font-weight: 300;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
     </style>
 </head>
 <body>
     <div class="page">
-        <!-- ======= VORDERSEITE ======= -->
+
+        <div class="card-label">Vorderseite</div>
+
+        <!-- ======================================================
+             VORDERSEITE
+             Dunkles Premium-Design mit Wasserzeichen-Layering
+             ====================================================== -->
         <div class="card-front">
-            <!-- Wasserzeichen Hintergrund: dunkel, gross, transparent -->
+
+            <!-- Grosses transparentes Wasserzeichen im Hintergrund -->
             <div class="watermark-bg">
                 <img src="logo-weiss.png" alt="">
             </div>
 
-            <!-- Wasserzeichen Vordergrund: heller, leicht sichtbar -->
-            <div class="watermark-fg">
-                <img src="logo-weiss.png" alt="">
-            </div>
+            <!-- Warmer Glow -->
+            <div class="front-glow"></div>
 
-            <!-- Haupt-Logo + Text -->
+            <!-- Scharfes weisses Logo + Tagline -->
             <div class="front-content">
                 <img src="logo-weiss.png" alt="I am Janice Mercedes" class="front-logo">
-                <div class="front-tagline">Tattoo Artist &nbsp;&amp;&nbsp; Beauty Expertin</div>
+                <div class="front-tagline">Tattoo &nbsp;&bull;&nbsp; Beauty &nbsp;&bull;&nbsp; Events</div>
             </div>
+
+            <!-- Goldene Akzentlinie am unteren Rand -->
+            <div class="front-gold-line"></div>
         </div>
 
-        <!-- ======= ABSTAND ======= -->
-        <div class="spacer"></div>
+        <!-- ABSTAND -->
+        <div class="spacer">
+            <div class="card-label" style="text-align:center; padding-top:18px;">R&uuml;ckseite</div>
+        </div>
 
-        <!-- ======= RUECKSEITE ======= -->
+        <!-- ======================================================
+             RÜCKSEITE
+             Helles elegantes Design - QR links, Kontakt rechts
+             ====================================================== -->
         <div class="card-back">
+
+            <!-- Goldener Akzent am linken Rand -->
+            <div class="back-left-accent"></div>
+
+            <!-- Dezentes Wasserzeichen -->
+            <div class="back-watermark">
+                <img src="logo-schwarz.png" alt="">
+            </div>
+
             <div class="back-layout">
-                <!-- Links: QR-Code -->
+
+                <!-- LINKS: QR-Code mit elegantem Rahmen -->
                 <div class="back-left">
-                    <img src="qrcode-beige.png" alt="QR Code zur Website" class="qr-img">
+                    <div class="qr-frame">
+                        <div class="qr-corner qr-corner-tl"></div>
+                        <div class="qr-corner qr-corner-tr"></div>
+                        <div class="qr-corner qr-corner-bl"></div>
+                        <div class="qr-corner qr-corner-br"></div>
+                        <img src="qrcode-beige.png" alt="QR Code" class="qr-img">
+                    </div>
+                    <div class="qr-label">Website besuchen</div>
                 </div>
 
-                <!-- Mitte: Senkrechte Trennlinie -->
-                <div class="divider-vertical"></div>
+                <!-- MITTE: Elegante vertikale Trennlinie -->
+                <div class="divider-line"></div>
 
-                <!-- Rechts: Kontaktdaten mit Icons -->
+                <!-- RECHTS: Kontaktdaten mit Icons -->
                 <div class="back-right">
-                    <!-- Telefon -->
-                    <div class="contact-item">
-                        <div class="contact-icon-circle">
-                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                        </div>
-                        <span class="contact-text">0XXXX XXXXXXX</span>
-                    </div>
 
-                    <!-- Instagram -->
-                    <div class="contact-item">
-                        <div class="contact-icon-circle">
-                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    <!-- Name & Titel -->
+                    <div class="back-name">Janice Mercedes</div>
+                    <div class="back-title">Tattoo Artist &amp; Beauty Expertin</div>
+
+                    <!-- Website -->
+                    <div class="contact-row">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                         </div>
-                        <span class="contact-text">@iamjanicemercedes</span>
+                        <span class="contact-info">www.iamjanicemercedes.de</span>
                     </div>
 
                     <!-- E-Mail -->
-                    <div class="contact-item">
-                        <div class="contact-icon-circle">
-                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <div class="contact-row">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-.4 4.25l-7.07 4.42c-.32.2-.74.2-1.06 0L4.4 8.25a.85.85 0 11.9-1.44L12 11l5.7-4.19a.85.85 0 01.9 1.44z"/></svg>
                         </div>
-                        <span class="contact-text">info@iamjanicemercedes.de</span>
+                        <span class="contact-info">info@iamjanicemercedes.de</span>
+                    </div>
+
+                    <!-- Instagram -->
+                    <div class="contact-row">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </div>
+                        <span class="contact-info">@iamjanicemercedes</span>
+                    </div>
+
+                    <!-- Standort -->
+                    <div class="contact-row">
+                        <div class="icon-circle">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <div>
+                            <span class="contact-info">Grosselfingen</span><br>
+                            <span class="contact-info-sub">Balingen &bull; Hechingen &bull; Region</span>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="social-divider"></div>
+                    <div class="social-row">
+                        <div class="social-icon-small">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </div>
+                        <div class="social-icon-small">
+                            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.84a4.84 4.84 0 01-1-.15z"/></svg>
+                        </div>
+                        <span class="social-text">@iamjanicemercedes</span>
                     </div>
                 </div>
             </div>

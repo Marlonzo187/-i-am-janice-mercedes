@@ -1097,6 +1097,57 @@ footer {
     display: block;
 }
 
+/* Danke / Fehler Seite */
+.danke-section {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 60px 20px;
+}
+
+.danke-content {
+    max-width: 600px;
+}
+
+.danke-logo {
+    width: 180px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.danke-content h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--tobacco);
+    margin-bottom: 20px;
+}
+
+.danke-content p {
+    color: var(--sand);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.referenz-hinweis {
+    text-align: center;
+    color: var(--sand);
+    font-size: 0.85rem;
+    font-style: italic;
+    margin: 10px 0 20px 0;
+}
+
+.referenz-hinweis a {
+    color: var(--tobacco);
+    text-decoration: none;
+}
+
+.referenz-hinweis a:hover {
+    text-decoration: underline;
+}
+
 .schnellbuchung-info {
     text-align: center;
     color: var(--tobacco);

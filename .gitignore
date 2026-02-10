@@ -11,6 +11,9 @@ Thumbs.db
 .agents/
 .cursor/
 
+# Server-Konfiguration mit Zugangsdaten
+config.php
+
 # Deploy-Kopie (wird separat deployed)
 deploy/
 

@@ -444,6 +444,22 @@
                 </div>
 
                 <div class="form-group full-width">
+                    <label for="beauty-strasse">Straße + Hausnummer *</label>
+                    <input type="text" id="beauty-strasse" name="strasse" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="beauty-plz">PLZ *</label>
+                        <input type="text" id="beauty-plz" name="plz" required pattern="[0-9]{5}" maxlength="5" inputmode="numeric">
+                    </div>
+                    <div class="form-group">
+                        <label for="beauty-ort">Ort *</label>
+                        <input type="text" id="beauty-ort" name="ort" required>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
                     <label for="beauty-behandlung">Behandlung *</label>
                     <select id="beauty-behandlung" name="behandlung" required>
                         <option value="">Bitte wählen...</option>
@@ -629,6 +645,22 @@
                     <div class="form-group">
                         <label for="telefon">Telefon *</label>
                         <input type="tel" id="telefon" name="telefon" required>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="tattoo-strasse">Straße + Hausnummer *</label>
+                    <input type="text" id="tattoo-strasse" name="strasse" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tattoo-plz">PLZ *</label>
+                        <input type="text" id="tattoo-plz" name="plz" required pattern="[0-9]{5}" maxlength="5" inputmode="numeric">
+                    </div>
+                    <div class="form-group">
+                        <label for="tattoo-ort">Ort *</label>
+                        <input type="text" id="tattoo-ort" name="ort" required>
                     </div>
                 </div>
 
@@ -1036,15 +1068,6 @@
             cookieBanner.classList.add('hidden');
         });
     </script>
-
-    <!-- Vercel Speed Insights (Core Web Vitals) -->
-    <script>
-      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
-
-    <!-- Vercel Web Analytics (Besucherzahlen & Dashboard) -->
-    <script defer src="/_vercel/insights/script.js"></script>
 
 </body>
 </html>

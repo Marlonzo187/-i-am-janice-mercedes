@@ -1,0 +1,5 @@
+# Admin-Bereich: auth.php vor direktem Zugriff schuetzen
+<Files "auth.php">
+    Order Allow,Deny
+    Deny from all
+</Files>

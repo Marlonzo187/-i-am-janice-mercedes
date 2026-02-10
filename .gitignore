@@ -19,3 +19,6 @@ deploy/
 
 # WhatsApp Bilder (Referenzmaterial)
 WhatsApp Image*
+
+# Uploads (Kundenbilder bleiben nur auf dem Server)
+uploads/

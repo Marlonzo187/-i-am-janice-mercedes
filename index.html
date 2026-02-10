@@ -16,7 +16,7 @@
     <link rel="canonical" href="https://iamjanicemercedes.de/">
     <link rel="icon" type="image/png" href="logo-schwarz.png">
     <link rel="apple-touch-icon" href="logo-schwarz.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260210">
 
     <!-- Strukturierte Daten: FAQPage -->
     <script type="application/ld+json">
@@ -391,24 +391,14 @@
     <section id="booking">
         <h2 class="fade-in">Termin buchen</h2>
 
-        <!-- Booking Selector -->
-        <div class="booking-selector fade-in" id="booking-selector">
-            <p class="booking-selector-title">Was möchtest du buchen?</p>
-            <div class="booking-choices">
-                <button type="button" class="booking-choice" data-target="booking-beauty">
-                    <span class="booking-choice-title">Beauty Termin</span>
-                    <span class="booking-choice-desc">Wimpern, Lifting, Brow Lifting</span>
-                </button>
-                <button type="button" class="booking-choice" data-target="booking-tattoo">
-                    <span class="booking-choice-title">Tattoo Anfrage</span>
-                    <span class="booking-choice-desc">Dein Wunschmotiv anfragen</span>
-                </button>
-            </div>
+        <!-- Booking Tabs -->
+        <div class="booking-tabs fade-in">
+            <button type="button" class="booking-tab active" data-booking="booking-beauty">Beauty Termin</button>
+            <button type="button" class="booking-tab" data-booking="booking-tattoo">Tattoo Anfrage</button>
         </div>
 
         <!-- Beauty Buchung -->
-        <div class="booking-category beauty-form-container fade-in" id="booking-beauty" style="display: none;">
-            <button type="button" class="booking-back" onclick="showBookingSelector()">&#8592; Zurück zur Auswahl</button>
+        <div class="booking-category beauty-form-container fade-in visible" id="booking-beauty">
             <h3>Beauty Termine</h3>
             <p>Wimpernverlängerung, Lash Lifting & mehr – sende deine Anfrage und ich melde mich mit einem Terminvorschlag!</p>
 
@@ -620,7 +610,6 @@
 
         <!-- Tattoo Anfrage Formular -->
         <div class="booking-category tattoo-form-container fade-in" id="booking-tattoo" style="display: none;">
-            <button type="button" class="booking-back" onclick="showBookingSelector()">&#8592; Zurück zur Auswahl</button>
             <h3>Tattoo Anfrage</h3>
             <p>Sende deine Anfrage mit deiner Verfügbarkeit – ich melde mich persönlich bei dir!</p>
 
@@ -1020,28 +1009,23 @@
             });
         });
 
-        // Booking Selector
-        function showBookingSelector() {
-            document.getElementById('booking-selector').style.display = '';
-            document.getElementById('booking-beauty').style.display = 'none';
-            document.getElementById('booking-tattoo').style.display = 'none';
-        }
-
+        // Booking Tabs
         function showBookingForm(targetId) {
-            document.getElementById('booking-selector').style.display = 'none';
+            document.querySelectorAll('.booking-tab').forEach(t => t.classList.remove('active'));
             document.getElementById('booking-beauty').style.display = 'none';
             document.getElementById('booking-tattoo').style.display = 'none';
             const target = document.getElementById(targetId);
             if (target) {
                 target.style.display = '';
                 target.classList.add('visible');
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
+            const activeTab = document.querySelector('.booking-tab[data-booking="' + targetId + '"]');
+            if (activeTab) activeTab.classList.add('active');
         }
 
-        document.querySelectorAll('.booking-choice').forEach(btn => {
+        document.querySelectorAll('.booking-tab').forEach(btn => {
             btn.addEventListener('click', () => {
-                showBookingForm(btn.getAttribute('data-target'));
+                showBookingForm(btn.getAttribute('data-booking'));
             });
         });
 

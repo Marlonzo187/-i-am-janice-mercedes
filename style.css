@@ -925,7 +925,51 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Booking Selector */
+/* Booking Tabs */
+.booking-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.booking-tab {
+    flex: 1;
+    max-width: 280px;
+    padding: 35px 30px;
+    background: var(--dark);
+    border: 1px solid var(--mahogany);
+    border-radius: 12px;
+    color: var(--sand);
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+    text-align: center;
+}
+
+.booking-tab:first-child {
+    border-right: 1px solid var(--mahogany);
+}
+
+.booking-tab:hover {
+    border-color: var(--tobacco);
+    box-shadow: 0 10px 30px rgba(181, 158, 125, 0.2);
+    transform: translateY(-4px);
+}
+
+.booking-tab.active {
+    background: var(--tobacco);
+    color: var(--darker);
+    border-color: var(--tobacco);
+    box-shadow: 0 10px 30px rgba(181, 158, 125, 0.25);
+}
+
+/* Booking Selector (legacy) */
 .booking-selector {
     max-width: 700px;
     margin: 0 auto 60px auto;
@@ -1577,21 +1621,18 @@ footer {
         height: 250px;
     }
 
-    /* Booking Selector Responsive */
-    .booking-choices {
-        flex-direction: column;
-        align-items: center;
+    /* Booking Tabs Responsive */
+    .booking-tabs {
+        flex-direction: row;
         gap: 15px;
+        padding: 0 10px;
     }
 
-    .booking-choice {
+    .booking-tab {
+        flex: 1;
         max-width: 100%;
-        width: 100%;
-        padding: 30px 20px;
-    }
-
-    .booking-choice-title {
-        font-size: 1.6rem;
+        padding: 28px 15px;
+        font-size: 1.5rem;
     }
 
     /* Formular Responsive */

@@ -67,10 +67,18 @@ try {
     echo "<p>Tabelle datenschutz_dokumente erstellt</p>";
 
     // Papierkorb: Soft-Delete Spalte hinzufuegen
-    $pdo->exec("
-        ALTER TABLE anfragen ADD COLUMN IF NOT EXISTS geloescht_am DATETIME NULL
-    ");
-    echo "<p>Spalte geloescht_am hinzugefuegt (oder existiert bereits)</p>";
+    $spalte_exists = $pdo->query("
+        SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS
+        WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'anfragen' AND COLUMN_NAME = 'geloescht_am'
+    ")->fetchColumn();
+
+    if (!$spalte_exists) {
+        $pdo->exec("ALTER TABLE anfragen ADD COLUMN geloescht_am DATETIME NULL");
+        echo "<p>Spalte geloescht_am hinzugefuegt</p>";
+    } else {
+        echo "<p>Spalte geloescht_am existiert bereits</p>";
+    }
+
 
     echo "<h2>Alles erfolgreich!</h2>";
     echo "<p style='color:red;font-weight:bold;'>WICHTIG: Diese Datei jetzt vom Server loeschen!</p>";

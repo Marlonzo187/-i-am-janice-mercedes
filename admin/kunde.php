@@ -352,17 +352,23 @@ $seitentitel = $anfrage
         if (!confirm('Anfrage wirklich in den Papierkorb verschieben?')) return;
 
         const id = this.dataset.anfrageId;
-        const res = await fetch('api.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRF-TOKEN': CSRF_TOKEN
-            },
-            body: `aktion=anfrage_loeschen&anfrage_id=${id}`
-        });
-        const data = await res.json();
-        if (data.ok) {
-            window.location.href = 'dashboard.php';
+        try {
+            const res = await fetch('api.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRF-TOKEN': CSRF_TOKEN
+                },
+                body: `aktion=anfrage_loeschen&anfrage_id=${id}`
+            });
+            const data = await res.json();
+            if (data.ok) {
+                window.location.href = 'dashboard.php';
+            } else {
+                alert('Fehler: ' + (data.error || 'Unbekannter Fehler'));
+            }
+        } catch (err) {
+            alert('Netzwerkfehler: ' + err.message);
         }
     });
 

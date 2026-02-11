@@ -238,6 +238,33 @@ select:focus {
     color: var(--tobacco);
 }
 
+/* === NAVIGATION === */
+.admin-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.admin-nav a {
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--chai);
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.admin-nav a:hover {
+    color: var(--vanilla);
+}
+
+.admin-nav a.active {
+    color: var(--vanilla);
+    background: rgba(181, 158, 125, 0.12);
+}
+
 /* === MAIN === */
 .admin-main {
     padding: 20px;
@@ -573,6 +600,196 @@ select:focus {
     color: var(--chai);
 }
 
+/* === PAGE TITLE === */
+.page-title {
+    font-weight: 200;
+    font-size: 1.4rem;
+    color: var(--vanilla);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.badge-count {
+    font-size: 0.8rem;
+    color: var(--chai);
+    font-weight: 300;
+}
+
+/* === SECTION HEADER === */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.section-header h2 {
+    margin-bottom: 0;
+}
+
+/* === KUNDEN-LISTE === */
+.kunden-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.kunde-card {
+    display: block;
+    background: var(--dark);
+    border: 1px solid var(--mahogany);
+    border-radius: 10px;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: var(--sand);
+}
+
+.kunde-card:hover {
+    border-color: var(--tobacco);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.kunde-card .card-email {
+    font-size: 0.8rem;
+    color: var(--chai);
+}
+
+/* === FORM ACTIONS === */
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+/* === UPLOAD === */
+.upload-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.upload-btn {
+    cursor: pointer;
+}
+
+.upload-hint {
+    font-size: 0.8rem;
+    color: var(--chai);
+}
+
+.upload-progress {
+    font-size: 0.85rem;
+    color: var(--tobacco);
+    margin-bottom: 12px;
+}
+
+.upload-success {
+    font-size: 0.85rem;
+    color: var(--success);
+    margin-bottom: 12px;
+}
+
+.upload-error {
+    font-size: 0.85rem;
+    color: var(--danger);
+    margin-bottom: 12px;
+}
+
+/* === DOKUMENTE === */
+.dokumente-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.empty-hint {
+    font-size: 0.85rem;
+    color: var(--chai);
+    font-style: italic;
+}
+
+.dokument-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    border: 1px solid var(--mahogany);
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.dokument-item:hover {
+    border-color: var(--chai);
+}
+
+.dokument-vorschau {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--darker);
+    border: 1px solid var(--mahogany);
+}
+
+.dokument-vorschau img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dokument-pdf {
+    flex-direction: column;
+    gap: 2px;
+    color: var(--tobacco);
+}
+
+.dokument-pdf span {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.dokument-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dokument-name {
+    font-size: 0.85rem;
+    color: var(--vanilla);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dokument-datum {
+    font-size: 0.75rem;
+    color: var(--chai);
+}
+
+.btn-danger {
+    background: transparent;
+    border-color: var(--danger);
+    color: var(--danger);
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 6px 10px;
+}
+
+.btn-danger:hover {
+    background: var(--danger);
+    color: var(--darker);
+}
+
 /* === MOBILE RESPONSIVE === */
 @media (max-width: 600px) {
     .admin-main {
@@ -612,5 +829,34 @@ select:focus {
     .historie-detail {
         flex-basis: 100%;
         order: 5;
+    }
+
+    .admin-nav {
+        gap: 2px;
+    }
+
+    .admin-nav a {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+        letter-spacing: 1px;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .upload-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dokument-item {
+        flex-wrap: wrap;
+    }
+
+    .form-actions {
+        flex-direction: column;
     }
 }

@@ -1,0 +1,8 @@
+# PHP-Ausfuehrung in Uploads verhindern
+php_flag engine off
+
+# Nur Bilddateien erlauben
+<FilesMatch "\.(?!jpe?g$|png$|webp$|pdf$)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

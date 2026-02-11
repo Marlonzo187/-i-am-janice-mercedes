@@ -91,10 +91,13 @@ $status_colors = [
 <body>
     <header class="admin-header">
         <div class="header-left">
-            <h1>Dashboard</h1>
+            <nav class="admin-nav">
+                <a href="dashboard.php" class="active">Dashboard</a>
+                <a href="kunden.php">Kunden</a>
+            </nav>
         </div>
         <div class="header-right">
-            <span class="admin-user">Janice</span>
+            <a href="kunde-edit.php" class="btn btn-small btn-primary">+ Neuer Kunde</a>
             <a href="logout.php" class="btn btn-small btn-outline">Logout</a>
         </div>
     </header>

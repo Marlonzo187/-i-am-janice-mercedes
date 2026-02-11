@@ -66,6 +66,12 @@ try {
     ");
     echo "<p>Tabelle datenschutz_dokumente erstellt</p>";
 
+    // Papierkorb: Soft-Delete Spalte hinzufuegen
+    $pdo->exec("
+        ALTER TABLE anfragen ADD COLUMN IF NOT EXISTS geloescht_am DATETIME NULL
+    ");
+    echo "<p>Spalte geloescht_am hinzugefuegt (oder existiert bereits)</p>";
+
     echo "<h2>Alles erfolgreich!</h2>";
     echo "<p style='color:red;font-weight:bold;'>WICHTIG: Diese Datei jetzt vom Server loeschen!</p>";
 

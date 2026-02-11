@@ -790,6 +790,60 @@ select:focus {
     color: var(--darker);
 }
 
+/* === PAPIERKORB === */
+.papierkorb-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.papierkorb-header .page-title {
+    margin-bottom: 0;
+}
+
+.papierkorb-card {
+    cursor: default;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.papierkorb-card:hover {
+    border-color: var(--mahogany);
+    box-shadow: none;
+}
+
+.btn-wiederherstellen {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.btn-wiederherstellen:hover {
+    background: var(--success);
+    color: var(--darker);
+}
+
+.btn-danger-outline {
+    background: transparent;
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.btn-danger-outline:hover {
+    background: var(--danger);
+    color: var(--darker);
+}
+
+/* === ANFRAGE LOESCHEN === */
+.anfrage-loeschen-section {
+    border-color: rgba(192, 112, 112, 0.3);
+}
+
+.delete-hint {
+    font-size: 0.85rem;
+    color: var(--chai);
+    margin-bottom: 12px;
+}
+
 /* === MOBILE RESPONSIVE === */
 @media (max-width: 600px) {
     .admin-main {

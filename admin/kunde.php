@@ -53,7 +53,7 @@ $k = $anfrage ?: $kunde;
 $hist_stmt = $pdo->prepare("
     SELECT id, formular_typ, behandlung, status, erstellt_am
     FROM anfragen
-    WHERE kunden_id = ?
+    WHERE kunden_id = ? AND geloescht_am IS NULL
     ORDER BY erstellt_am DESC
 ");
 $hist_stmt->execute([$kunden_id]);
@@ -101,6 +101,7 @@ $seitentitel = $anfrage
             <nav class="admin-nav">
                 <a href="dashboard.php">Dashboard</a>
                 <a href="kunden.php">Kunden</a>
+                <a href="papierkorb.php">Papierkorb</a>
             </nav>
         </div>
         <div class="header-right">
@@ -225,6 +226,13 @@ $seitentitel = $anfrage
                       placeholder="Notizen zu dieser Anfrage..."><?= e($anfrage['admin_notizen'] ?? '') ?></textarea>
             <button class="btn btn-primary btn-save" id="save-admin-notizen">Speichern</button>
         </section>
+
+        <!-- Anfrage loeschen -->
+        <section class="detail-section anfrage-loeschen-section">
+            <h3>Anfrage l&ouml;schen</h3>
+            <p class="delete-hint">Verschiebt diese Anfrage in den Papierkorb. Sie kann dort wiederhergestellt werden.</p>
+            <button class="btn btn-small btn-danger-outline" id="anfrage-loeschen" data-anfrage-id="<?= $anfrage_id ?>">In Papierkorb verschieben</button>
+        </section>
         <?php endif; ?>
 
         <!-- Kunden-Notizen (allgemein) -->
@@ -337,6 +345,25 @@ $seitentitel = $anfrage
                 this.style.color = '#1E1B18';
             }
         });
+    });
+
+    // Anfrage loeschen (in Papierkorb)
+    document.getElementById('anfrage-loeschen').addEventListener('click', async function() {
+        if (!confirm('Anfrage wirklich in den Papierkorb verschieben?')) return;
+
+        const id = this.dataset.anfrageId;
+        const res = await fetch('api.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRF-TOKEN': CSRF_TOKEN
+            },
+            body: `aktion=anfrage_loeschen&anfrage_id=${id}`
+        });
+        const data = await res.json();
+        if (data.ok) {
+            window.location.href = 'dashboard.php';
+        }
     });
 
     // Admin-Notizen speichern

@@ -79,6 +79,7 @@ $titel = $kunden_id ? 'Kunde bearbeiten' : 'Neuer Kunde';
             <nav class="admin-nav">
                 <a href="dashboard.php">Dashboard</a>
                 <a href="kunden.php">Kunden</a>
+                <a href="papierkorb.php">Papierkorb</a>
             </nav>
         </div>
         <div class="header-right">

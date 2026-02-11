@@ -174,6 +174,37 @@ switch ($aktion) {
         ]);
         break;
 
+    case 'anfrage_loeschen':
+        $anfrage_id = intval($_POST['anfrage_id'] ?? 0);
+
+        if (!$anfrage_id) {
+            echo json_encode(['ok' => false, 'error' => 'Ungueltige Anfrage-ID']);
+            exit;
+        }
+
+        $stmt = $pdo->prepare("UPDATE anfragen SET geloescht_am = NOW() WHERE id = ? AND geloescht_am IS NULL");
+        $stmt->execute([$anfrage_id]);
+        echo json_encode(['ok' => true]);
+        break;
+
+    case 'anfrage_wiederherstellen':
+        $anfrage_id = intval($_POST['anfrage_id'] ?? 0);
+
+        if (!$anfrage_id) {
+            echo json_encode(['ok' => false, 'error' => 'Ungueltige Anfrage-ID']);
+            exit;
+        }
+
+        $stmt = $pdo->prepare("UPDATE anfragen SET geloescht_am = NULL WHERE id = ?");
+        $stmt->execute([$anfrage_id]);
+        echo json_encode(['ok' => true]);
+        break;
+
+    case 'papierkorb_leeren':
+        $pdo->exec("DELETE FROM anfragen WHERE geloescht_am IS NOT NULL");
+        echo json_encode(['ok' => true]);
+        break;
+
     case 'datenschutz_loeschen':
         $dok_id = intval($_POST['dok_id'] ?? 0);
 

@@ -14,7 +14,7 @@ $pro_seite = 20;
 $offset = ($seite - 1) * $pro_seite;
 
 // Query aufbauen
-$where = [];
+$where = ['a.geloescht_am IS NULL'];
 $params = [];
 
 if ($status_filter && in_array($status_filter, ['neu', 'bestaetigt', 'abgeschlossen', 'storniert'])) {
@@ -62,8 +62,12 @@ $anfragen = $stmt->fetchAll();
 
 // Status-Zaehler fuer Filter-Badges
 $status_counts = $pdo->query("
-    SELECT status, COUNT(*) as anzahl FROM anfragen GROUP BY status
+    SELECT status, COUNT(*) as anzahl FROM anfragen WHERE geloescht_am IS NULL GROUP BY status
 ")->fetchAll(PDO::FETCH_KEY_PAIR);
+
+$papierkorb_count = $pdo->query("
+    SELECT COUNT(*) FROM anfragen WHERE geloescht_am IS NOT NULL
+")->fetchColumn();
 
 $status_labels = [
     'neu' => 'Neu',
@@ -94,6 +98,7 @@ $status_colors = [
             <nav class="admin-nav">
                 <a href="dashboard.php" class="active">Dashboard</a>
                 <a href="kunden.php">Kunden</a>
+                <a href="papierkorb.php">Papierkorb<?php if ($papierkorb_count): ?> <span class="badge">(<?= $papierkorb_count ?>)</span><?php endif; ?></a>
             </nav>
         </div>
         <div class="header-right">

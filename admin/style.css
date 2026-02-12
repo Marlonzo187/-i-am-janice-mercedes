@@ -913,4 +913,150 @@ select:focus {
     .form-actions {
         flex-direction: column;
     }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* === STATISTIKEN === */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.stat-card {
+    background: var(--dark);
+    border: 1px solid var(--mahogany);
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--chai);
+    margin-bottom: 6px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--tobacco);
+    line-height: 1.1;
+}
+
+.stat-detail {
+    font-size: 0.8rem;
+    color: var(--mountain);
+    margin-top: 4px;
+}
+
+.stat-total {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--chai);
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.stat-total strong {
+    color: var(--vanilla);
+}
+
+/* Chart */
+.chart-container {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.chart-container canvas {
+    display: block;
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 0.8rem;
+    color: var(--chai);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.legend-besucher {
+    background: var(--tobacco);
+}
+
+.legend-aufrufe {
+    background: rgba(181, 158, 125, 0.3);
+    border: 1px solid var(--tobacco);
+}
+
+/* Stats-Tabellen (Seiten & Referrer) */
+.stats-table {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.stats-row-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+}
+
+.stats-row-name {
+    font-size: 0.9rem;
+    color: var(--vanilla);
+    font-weight: 400;
+}
+
+.stats-row-values {
+    font-size: 0.8rem;
+    color: var(--chai);
+}
+
+.stats-bar-bg {
+    width: 100%;
+    height: 6px;
+    background: var(--darker);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.stats-bar {
+    height: 100%;
+    background: var(--tobacco);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.stats-bar-referrer {
+    background: var(--chai);
+}
+
+@media (max-width: 600px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
 }

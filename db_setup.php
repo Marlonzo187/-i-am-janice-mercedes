@@ -66,6 +66,24 @@ try {
     ");
     echo "<p>Tabelle datenschutz_dokumente erstellt</p>";
 
+    // Besucher-Tracking Tabelle
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS besuche (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            seite VARCHAR(255) NOT NULL,
+            referrer VARCHAR(500) NULL,
+            ip_hash VARCHAR(64) NOT NULL,
+            besucher_id VARCHAR(64) NOT NULL,
+            user_agent VARCHAR(500) NULL,
+            zeitpunkt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            INDEX idx_zeitpunkt (zeitpunkt),
+            INDEX idx_seite (seite),
+            INDEX idx_besucher_id (besucher_id),
+            INDEX idx_ip_hash_zeit (ip_hash, zeitpunkt)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    ");
+    echo "<p>Tabelle besuche erstellt</p>";
+
     // Papierkorb: Soft-Delete Spalte hinzufuegen
     $spalte_exists = $pdo->query("
         SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS

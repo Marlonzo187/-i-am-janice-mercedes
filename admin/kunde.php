@@ -101,6 +101,7 @@ $seitentitel = $anfrage
             <nav class="admin-nav">
                 <a href="dashboard.php">Dashboard</a>
                 <a href="kunden.php">Kunden</a>
+                <a href="statistiken.php">Statistiken</a>
                 <a href="papierkorb.php">Papierkorb</a>
             </nav>
         </div>

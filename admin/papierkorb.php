@@ -44,6 +44,7 @@ $status_colors = [
             <nav class="admin-nav">
                 <a href="dashboard.php">Dashboard</a>
                 <a href="kunden.php">Kunden</a>
+                <a href="statistiken.php">Statistiken</a>
                 <a href="papierkorb.php" class="active">Papierkorb</a>
             </nav>
         </div>

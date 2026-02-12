@@ -55,6 +55,7 @@ $kunden = $stmt->fetchAll();
             <nav class="admin-nav">
                 <a href="dashboard.php">Dashboard</a>
                 <a href="kunden.php" class="active">Kunden</a>
+                <a href="statistiken.php">Statistiken</a>
                 <a href="papierkorb.php">Papierkorb</a>
             </nav>
         </div>

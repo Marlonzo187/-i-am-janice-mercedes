@@ -98,6 +98,7 @@ $status_colors = [
             <nav class="admin-nav">
                 <a href="dashboard.php" class="active">Dashboard</a>
                 <a href="kunden.php">Kunden</a>
+                <a href="statistiken.php">Statistiken</a>
                 <a href="papierkorb.php">Papierkorb<?php if ($papierkorb_count): ?> <span class="badge">(<?= $papierkorb_count ?>)</span><?php endif; ?></a>
             </nav>
         </div>

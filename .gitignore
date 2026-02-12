@@ -14,6 +14,9 @@ Thumbs.db
 # Server-Konfiguration mit Zugangsdaten
 config.php
 
+# Windows Artefakte
+nul
+
 # Deploy-Kopie (wird separat deployed)
 deploy/
 

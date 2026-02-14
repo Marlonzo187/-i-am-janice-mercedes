@@ -115,7 +115,12 @@ $seitentitel = $anfrage
         <section class="detail-section">
             <div class="section-header">
                 <h2><?= e($k['vorname'] . ' ' . $k['nachname']) ?></h2>
-                <a href="kunde-edit.php?id=<?= $kunden_id ?>" class="btn btn-small btn-outline">Bearbeiten</a>
+                <div class="section-header-actions">
+                    <?php if ($k['email']): ?>
+                    <button class="btn btn-small btn-primary" id="btn-terminmail">Bestätigungsmail</button>
+                    <?php endif; ?>
+                    <a href="kunde-edit.php?id=<?= $kunden_id ?>" class="btn btn-small btn-outline">Bearbeiten</a>
+                </div>
             </div>
             <div class="detail-grid">
                 <div class="detail-item">
@@ -312,6 +317,76 @@ $seitentitel = $anfrage
         </section>
         <?php endif; ?>
     </main>
+
+    <?php if ($k['email']): ?>
+    <!-- Terminbestaetigungs-Modal -->
+    <div class="modal-overlay" id="terminmail-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-header-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                    <h3>Terminbest&auml;tigung senden</h3>
+                </div>
+                <button class="modal-close" id="terminmail-close" title="Schliessen">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-empfaenger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span><strong><?= e($k['vorname'] . ' ' . $k['nachname']) ?></strong> &lt;<?= e($k['email']) ?>&gt;</span>
+                </div>
+
+                <div class="form-row-modal">
+                    <label for="mail-typ">Terminart</label>
+                    <select id="mail-typ">
+                        <option value="Tattoo" <?= ($anfrage && $anfrage['formular_typ'] === 'Tattoo') ? 'selected' : '' ?>>Tattoo</option>
+                        <option value="Beauty" <?= ($anfrage && $anfrage['formular_typ'] === 'Beauty') ? 'selected' : '' ?>>Beauty</option>
+                    </select>
+                </div>
+
+                <div class="form-row-2col">
+                    <div class="form-row-modal">
+                        <label for="mail-datum">Datum</label>
+                        <input type="date" id="mail-datum">
+                    </div>
+                    <div class="form-row-modal">
+                        <label for="mail-uhrzeit">Uhrzeit</label>
+                        <input type="time" id="mail-uhrzeit">
+                    </div>
+                </div>
+
+                <div class="form-row-modal">
+                    <label for="mail-adresse">Studio-Adresse</label>
+                    <input type="text" id="mail-adresse" value="Schlehenweg 3, 72415 Grosselfingen">
+                </div>
+
+                <div class="form-divider"></div>
+
+                <div class="form-row-modal">
+                    <label for="mail-betreff">Betreff</label>
+                    <input type="text" id="mail-betreff" value="Deine Terminbestaetigung - I am Janice Mercedes">
+                </div>
+
+                <div class="form-row-modal">
+                    <label for="mail-text">Nachricht</label>
+                    <textarea class="mail-textarea" id="mail-text"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="terminmail-cancel">Abbrechen</button>
+                <button class="btn btn-primary btn-send" id="terminmail-send">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+                    Senden
+                </button>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
 
     <script>
     const CSRF_TOKEN = '<?= $_SESSION['csrf_token'] ?>';
@@ -522,6 +597,140 @@ $seitentitel = $anfrage
         div.textContent = str;
         return div.innerHTML;
     }
+
+    <?php if ($k['email']): ?>
+    // === TERMINBESTAETIGUNGS-MAIL ===
+    const MAIL_TEXTE = {
+        Beauty: `Dein Termin wurde bestätigt!\n\nDatum: {datum}\nUhrzeit: {uhrzeit}\nAdresse: {adresse}\n\nBitte beachte folgende Hinweise:\n\n- Pünktlich und ungeschminkt kommen\n\nIch freue mich auf dich!\n\nLiebe Grüße\nJanice`,
+        Tattoo: `Dein Termin wurde bestätigt!\n\nDatum: {datum}\nUhrzeit: {uhrzeit}\nAdresse: {adresse}\n\nBitte beachte folgende Hinweise:\n\n- Pünktlich kommen\n- Ausreichend getrunken und gegessen haben\n- Bequeme Klamotten tragen\n- Kein Alkohol und keine Drogen vor dem Termin\n- Fit und ausgeruht kommen\n- 24h vorher keine Schmerzmittel\n- Vor dem Termin duschen, aber nicht eincremen\n\nIch freue mich auf dich!\n\nLiebe Grüße\nJanice`
+    };
+
+    const modal = document.getElementById('terminmail-modal');
+    const mailTyp = document.getElementById('mail-typ');
+    const mailDatum = document.getElementById('mail-datum');
+    const mailUhrzeit = document.getElementById('mail-uhrzeit');
+    const mailAdresse = document.getElementById('mail-adresse');
+    const mailBetreff = document.getElementById('mail-betreff');
+    const mailText = document.getElementById('mail-text');
+    let textManuellBearbeitet = false;
+
+    function formatDatum(isoDate) {
+        if (!isoDate) return '(bitte waehlen)';
+        const [y, m, d] = isoDate.split('-');
+        return `${d}.${m}.${y}`;
+    }
+
+    function formatUhrzeit(time) {
+        if (!time) return '(bitte waehlen)';
+        return time + ' Uhr';
+    }
+
+    function updateMailText() {
+        const vorlage = MAIL_TEXTE[mailTyp.value] || MAIL_TEXTE.Tattoo;
+        mailText.value = vorlage
+            .replace('{datum}', formatDatum(mailDatum.value))
+            .replace('{uhrzeit}', formatUhrzeit(mailUhrzeit.value))
+            .replace('{adresse}', mailAdresse.value);
+    }
+
+    function smartUpdate() {
+        if (textManuellBearbeitet) {
+            if (!confirm('Du hast den Text manuell bearbeitet. Vorlage neu laden?')) return;
+        }
+        textManuellBearbeitet = false;
+        updateMailText();
+    }
+
+    // Text initial fuellen
+    updateMailText();
+
+    // Events: Bei Aenderung Text neu generieren
+    mailTyp.addEventListener('change', smartUpdate);
+    mailDatum.addEventListener('change', smartUpdate);
+    mailUhrzeit.addEventListener('change', smartUpdate);
+    mailAdresse.addEventListener('input', smartUpdate);
+
+    // Manuelle Bearbeitung erkennen
+    mailText.addEventListener('input', () => { textManuellBearbeitet = true; });
+
+    // Modal oeffnen
+    document.getElementById('btn-terminmail').addEventListener('click', () => {
+        textManuellBearbeitet = false;
+        updateMailText();
+        modal.classList.add('active');
+    });
+
+    // Modal schliessen
+    function closeModal() {
+        modal.classList.remove('active');
+    }
+
+    document.getElementById('terminmail-cancel').addEventListener('click', closeModal);
+    document.getElementById('terminmail-close').addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+
+    // E-Mail senden
+    const sendIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>';
+
+    document.getElementById('terminmail-send').addEventListener('click', async function() {
+        const btn = this;
+        const typ = mailTyp.value;
+        const datum = mailDatum.value;
+        const uhrzeit = mailUhrzeit.value;
+        const text = mailText.value.trim();
+        const betreff = mailBetreff.value.trim();
+
+        if (!datum || !uhrzeit) {
+            alert('Bitte Datum und Uhrzeit auswaehlen.');
+            return;
+        }
+        if (!text) {
+            alert('Bitte Nachrichtentext eingeben.');
+            return;
+        }
+
+        btn.disabled = true;
+        btn.innerHTML = 'Wird gesendet...';
+
+        try {
+            const res = await fetch('api.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRF-TOKEN': CSRF_TOKEN
+                },
+                body: `aktion=terminbestaetigung&kunden_id=${KUNDEN_ID}&typ=${encodeURIComponent(typ)}&datum=${encodeURIComponent(datum)}&uhrzeit=${encodeURIComponent(uhrzeit)}&betreff=${encodeURIComponent(betreff)}&nachricht=${encodeURIComponent(text)}`
+            });
+            const data = await res.json();
+
+            if (data.ok) {
+                btn.innerHTML = 'Gesendet!';
+                btn.classList.add('btn-success');
+                setTimeout(() => {
+                    closeModal();
+                    btn.innerHTML = sendIcon + ' Senden';
+                    btn.classList.remove('btn-success');
+                    btn.disabled = false;
+                }, 1500);
+            } else {
+                alert('Fehler: ' + (data.error || 'Unbekannter Fehler'));
+                btn.innerHTML = sendIcon + ' Senden';
+                btn.disabled = false;
+            }
+        } catch (err) {
+            alert('Netzwerkfehler: ' + err.message);
+            btn.innerHTML = sendIcon + ' Senden';
+            btn.disabled = false;
+        }
+    });
+    <?php endif; ?>
     </script>
 </body>
 </html>
